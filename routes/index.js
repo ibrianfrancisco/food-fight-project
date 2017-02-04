@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var yelp = require('../config/yelp');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
