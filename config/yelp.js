@@ -1,38 +1,52 @@
-var Yelp = require('yelp');
+var Yelp = require('yelp-api-v3');
 
 var yelp = new Yelp({
-  consumer_key: process.env.CONSUMER_KEY,
-  consumer_secret: process.env.CONSUMER_SECRET,
-  token: process.env.TOKEN,
-  token_secret: process.env.TOKEN_SECRET
+  app_id: process.env.APP_ID,
+  app_secret: process.env.APP_SECRET
 });
-
 
 //------------- How to use Yelp's documentation -------------//
 
-
-// See http://www.yelp.com/developers/documentation/v2/search_api
-// yelp.search({ term: 'food', location: 'Montreal' })
+// // https://github.com/Yelp/yelp-api-v3/blob/master/docs/api-references/businesses-search.md
+// yelp.search({term: 'food', location: '90210', price: '1,2,3', limit: 10})
 // .then(function (data) {
-//   console.log(data);
+//     console.log(data);
 // })
 // .catch(function (err) {
-//   console.error(err);
+//     console.error(err);
 // });
 
-// See http://www.yelp.com/developers/documentation/v2/business
-// yelp.business('yelp-san-francisco')
-//   .then(console.log)
-//   .catch(console.error);
+// // https://github.com/Yelp/yelp-api-v3/blob/master/docs/api-references/businesses-search-phone.md
+// yelp.phoneSearch({phone: '+14159083801'})
+// .then(function (data) { console.log(data); })
+// .catch(function (err) { console.error(err);});
 
-// yelp.phoneSearch({ phone: '+15555555555' })
-//   .then(console.log)
-//   .catch(console.error);
+// // https://github.com/Yelp/yelp-api-v3/blob/master/docs/api-references/transactions-search.md
+// yelp.transactionSearch('delivery', {location: 'Boston'})
+// .then(function (data) { console.log(data); })
+// .catch(function (err) { console.error(err);});
 
-// A callback based API is also available:
-// yelp.business('yelp-san-francisco', function(err, data) {
-//   if (err) return console.log(error);
-//   console.log(data);
+// // https://github.com/Yelp/yelp-api-v3/blob/master/docs/api-references/businesses-id.md
+// yelp.business('yuko-kitchen-los-angeles')
+// .then(function (data) { console.log(data); })
+// .catch(function (err) { console.error(err);});
+
+// // https://github.com/Yelp/yelp-api-v3/blob/master/docs/api-references/businesses-id-reviews.md
+// yelp.reviews('yuko-kitchen-los-angeles')
+// .then(function (data) { console.log(data); })
+// .catch(function (err) { console.error(err);});
+
+// // https://github.com/Yelp/yelp-api-v3/blob/master/docs/api-references/autocomplete.md
+// yelp.autocomplete({text: 'Pizz', latitude: 40.71,longitude: 74.00}, callback)
+// .then(function (data) { console.log(data); })
+// .catch(function (err) { console.error(err);});
+
+// // callbacks
+// yelp.search({term: 'food', location: '90210', limit: 10}, function(err, data) {
+//     if (err) {
+//         return console.log(error);
+//     }
+//     console.log(data);
 // });
 
 module.exports = yelp;

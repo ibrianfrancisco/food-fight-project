@@ -5,9 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-// added these for Yelp's API
-var oauthSignature = require('oauth-signature');
-var n = require('nonce')();
 var request = require('request');
 require('dotenv').config();
 require('./config/database');
