@@ -1,5 +1,5 @@
 var request = require('request');
-var yelp = require('../config/yelp');
+var yelp = require('../../config/yelp');
 const rootURL = 'https://api.yelp.com/';
 
 module.exports = {
