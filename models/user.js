@@ -2,15 +2,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var commentSchema = new Schema ({
-  content: String
+  content: String,
+  business_id: {type: Schema.Types.ObjectId, ref:"Business"}
 });
 
-var userSchema = new.mongoose.Schema({
-	userName: {
+var userSchema = new mongoose.Schema({
+	name: {
 		type: String,
 		required: true,
 		unique: true
 	},
+  email: String,
 	googleId: String,
 	profileImage: String,
 	favorites: [{type: Schema.Types.ObjectId, ref:"Business"}],
