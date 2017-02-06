@@ -7,10 +7,8 @@ var businessSchema = new.mongoose.Schema({
 	categories: Object,
 	image_url: String,
 	id: String,
-	comments: String,
-	location: {
-		type: String
-	}
+	comments: [{type: Schema.Types.ObjectId, ref:"User"}],
+	location: Object
 });
 
 module.exports = mongoose.model('Business', businessSchema);
