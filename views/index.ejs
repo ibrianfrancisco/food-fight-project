@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Don't Panic</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
   </head>
   <body>
-    <h1>Quick Picks</h1>
-
-    <form action="/search" method="POST">
-      <div>
-        <input type="text" name="term" placeholder="Search something!">
-        <input type="text" name="location" placeholder="Location">
-        <button type="submit">Go!</button>
+    <nav id="main-nav">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Dont Panic</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="">Search</a></li>
+          <li><a href="">Secondary</a></li>
+          <li><a href="">Log in with Google</a></li>
+        </ul>
       </div>
-    </form>
-
-
-
+    </nav>
+    <div id="main-wrapper">
+      <div id="search-wrapper">
+        <div id="main-form-wrapper">
+          <form id="main-search" action="">
+            <label id="searchfor-label" for="search">Search for...</label>
+            <input id="search-field" type="" name="search">
+            <input id="main-search-submit" class="waves-effect waves-light btn" type="submit" value="Search">
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="secondary-wrapper">
+    </div>
   </body>
 </html>
