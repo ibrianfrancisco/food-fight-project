@@ -6,9 +6,15 @@
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    var images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
+    $(function() {
+    $('#main-wrapper').css({'background-image': 'url(/assets/images/' + images[Math.floor(Math.random() * images.length)] + ')'});
+    });
+    </script>
   </head>
   <body>
-
+  
     <div id="main-wrapper">
     <div class="navbar-fixed">
       <nav id="main-nav">
@@ -26,6 +32,7 @@
         </div>
       </nav>
     </div>
+  
       <!-- <div id="search-wrapper">
         <div id="main-form-wrapper">
           <form id="main-search" action="">
@@ -50,6 +57,7 @@
      <!-- JavaScript for Materialize -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
      <!-- <script src="javascripts/app.js"></script> -->
+     <!--<script src="public/javascripts/main.js"></script>-->
   </body>
 
   <!-- jQuery (required by Materialize) -->
