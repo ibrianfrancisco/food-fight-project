@@ -6,6 +6,15 @@ mongoose.Promise = Promise;
 
 var db = mongoose.connection;
 
+// CARIE START
+// mongoose.connect(process.env.DATABASE_URL);
+
+// database connection event
+// db.once('open', function () {
+//   console.log(`Mongoose connected to: ${process.env.DATABASE_URL}`);
+// });
+// CARIE END
+
 db.once('open', function() {
   console.log(`Connected to MongoDB at ${db.host}:${db.port}`);
 })
