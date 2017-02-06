@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Food Fight</title>
+    <meta name="google-signin-client_id" content="769694420542-92ot149l6j95m22lqkugofm9bs0bk11d.apps.googleusercontent.com.apps.googleusercontent.com">
     <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
@@ -10,11 +12,16 @@
   <body>
     <nav id="main-nav">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Dont Panic</a>
+        <a href="#" class="brand-logo">Food Fight</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="">Search</a></li>
           <li><a href="">Secondary</a></li>
-          <li><a href="">Log in with Google</a></li>
+          <$ if (user) { $>
+            <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
+          <$ } else { $>
+            <!-- <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li> -->
+            <li><a href="/auth/google"><div class="g-signin2"></div></a></li>
+          <$ } $>
         </ul>
       </div>
     </nav>
@@ -32,4 +39,14 @@
     <div id="secondary-wrapper">
     </div>
   </body>
+
+  <!-- jQuery (required by Materialize) -->
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <!-- Using Underscore for collection manipulation and client-side templatin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <!-- JavaScript for Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <!-- <script src="javascripts/app.js"></script> -->
+
 </html>
