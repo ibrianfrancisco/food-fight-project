@@ -19,16 +19,8 @@ function search(req, res) {
   .catch(function (err) {
     console.error(err);
   });
-
-  // var options = {
-  //   url: rootURL + 'v3/search/?term=' + req.body.search,
-  //   headers: {
-  //     'Content-Type': 'application/x-www-form-urlencoded',
-  //     'Authorization': 'Bearer ' + process.env.ACCESS_TOKEN
-  //   }
-  // }
 }
 
 function userDetails(req, res) {
-  res.render('index', {});
+  res.render('index', {title: 'Express'});
 }
