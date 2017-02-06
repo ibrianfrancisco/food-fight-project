@@ -1,7 +1,7 @@
 // CARLIE START
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-// var User = require('../models/user');
+var User = require('../models/user');
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -19,7 +19,7 @@ passport.use(new GoogleStrategy({
           name: profile.displayName,
           email: profile.emails[0].value,
           googleId: profile.id,
-          image: profile.photos[0].value
+          profileImage: profile.photos[0].value
         });
         newUser.save(function(err) {
           if (err) return cb(err);

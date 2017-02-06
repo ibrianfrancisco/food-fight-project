@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var yelpCtrl = require('../controllers/yelp');
+
 // CARLIE START
 var passport = require('passport');
 // CARLIE END
@@ -7,39 +9,28 @@ var yelp = require('../config/yelp');
 const rootURL = 'https://api.yelp.com/';
 
 
-/* GET home page. */
 // CARLIE START
 router.get('/', function(req, res, next) {
     res.render('index', { user: req.user });
 });
 // CARLIE END
 
-router.get('/', function(req, res, next) {
-  yelp.search({term: 'euro cafe', location: 'Irvine, CA', price: '1,2,3', limit: 1})
-  .then(function (data) {
-    console.log(data);
-    res.json(data);
-  })
-  .catch(function (err) {
-      console.error(err);
-  });
-});
+/* GET home page. */
+router.get('/', yelpCtrl.userDetails);
+router.get('/search', yelpCtrl.search);
 
 // CARLIE START
-//once the UI is in place, we will use this
 router.get('/auth/google', passport.authenticate(
   'google',
-  { scope: ['profile', 'email', 'image'] }
+  { scope: ['profile', 'email'] }
 ));
-
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/',
-    failureRedirect : '/'
+    successRedirect: '/',
+    failureRedirect: '/'
   }
 ));
-// OAuth logout route
 router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
