@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Don't Panic</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>Quick Picks</h1>
+
+    <form action="/search" method="POST">
+      <div>
+        <input type="text" name="term" placeholder="Search something!">
+        <input type="text" name="location" placeholder="Location">
+        <button type="submit">Go!</button>
+      </div>
+    </form>
+
+
+
   </body>
 </html>
