@@ -6,6 +6,10 @@ const rootURL = 'https://api.yelp.com/';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+   res.render('index');
+});
+
+router.get('/', function(req, res, next) {
   yelp.search({term: 'euro cafe', location: 'Irvine, CA', price: '1,2,3', limit: 1})
   .then(function (data) {
     console.log(data);
