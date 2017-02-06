@@ -1,3 +1,6 @@
+#main-nav {
+  background-color: rgba(225,152,0,.0);
+}
 
 #main-wrapper {
   width: 100%;
@@ -18,7 +21,8 @@
   background-color: rgba(225,225,225,.8);
   margin: 0 auto;
   position: relative;
-  top: 30%
+  top: 30%;
+  border-radius: 10px;
 }
 
 #main-form-wrapper {
@@ -26,17 +30,69 @@
   width: 300px;
   margin: 0 auto;
   position: relative;
-  top: 35%;
+  top: 25%;
 }
 
 #search-field {
   width: 300px;
+  height: 30px;
 }
 
-#main-search-submit {
-  margin-top: 5px;
-}
 
 #searchfor-label {
   color: black;
+}
+
+#search-field {
+  width: 400px;
+  height: 50px;
+  margin-bottom: 0;
+}
+
+#form-wrap {
+  margin: 0 auto;
+  background-color: white;
+  width: 400px;
+  position: relative;
+  top: 30%;
+}
+
+#input-field {
+  margin: 0 auto;
+  position: relative;
+}
+
+#project-name {
+  margin-left: 20px;
+}
+
+#searchfor-label{
+  font-size: 20px;
+}
+
+.main-search-submit {
+  margin-top: 5px;
+}
+
+.search-wrapper {
+  height: 100px;
+  width: 400px;
+  background-color: #f44336;
+}
+
+/*Testing*/
+::-webkit-input-placeholder {
+   color: #bdbdbd;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #bdbdbd;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #bdbdbd;
+}
+
+:-ms-input-placeholder {
+   color: #bdbdbd;
 }

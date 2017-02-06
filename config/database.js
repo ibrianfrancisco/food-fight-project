@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/dontpanic');
+mongoose.connect(process.env.DATABASE_URL);
 mongoose.Promise = Promise;
 
 
