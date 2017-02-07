@@ -43,7 +43,12 @@
       </div> -->
       <div id="form-wrap">
         <div class="input-field">
-          <input placeholder="Search For..." id="search-field" type="text" class="validate">
+          <!-- <input placeholder="Search For..." id="search-field" type="text" class="validate"> -->
+          <form action="/", method="POST">
+            <input name="term" type="text">
+            <input name="location" type="text">
+            <button type="submit">Submit</button>
+          </form>
         </div>
       </div>
     </div>
