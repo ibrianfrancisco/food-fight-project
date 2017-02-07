@@ -6,37 +6,64 @@
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script type="text/javascript"></script>
   </head>
   <body>
-    <$= jsonBussObj.businesses[0].id $>
-
-
-
-<script>
-
-var results = [
-<$ jsonBussObj.businesses.forEach(function(biz) { $>
-  {
-    id: '<$= biz.id $>',
-    name: '<$= biz.name $>'
-  },
-<$ }); $>
-
-];
+    <p>I am going to <span id="business-name"></span>'s.</p>
+    <div id="business-image" style="height: 500px; width: 500px;"></div>
+    <button id="click" onclick="nextBusiness();" id="button">Next</button>
 
 
 
 
 
-</script>
+
+
+
+    <script type="text/javascript">
+      var results = [
+        <$ jsonBussObj.businesses.forEach(function(business) { $>
+          {
+            id: '<$= business.id $>',
+            name: '<$= business.name $>',
+            image_url: '<$= business.image_url $>'
+          },
+        <$ }); $>
+      ];
+
+      function shuffle(array) {
+        var m = array.length, t, i;
+        // While there remain elements to shuffle…
+        while (m) {
+          // Pick a remaining element…
+          i = Math.floor(Math.random() * m--);
+          // And swap it with the current element.
+          t = array[m];
+          array[m] = array[i];
+          array[i] = t;
+        }
+        return array;
+      }
+
+      var shuffled = shuffle(results);
+      var myIndex = 1;
+      $('#business-name').html(shuffled[0].name);
+      $('#business-image').css({'background-image': 'url(' + shuffled[0].image_url + ')'});
+
+      function nextBusiness() {
+        var next = myIndex++%shuffled.length;
+        $('#business-name').html(shuffled[next].name);
+        $('#business-image').css({'background-image': 'url(' + shuffled[next].image_url + ')'});
+      };
+    </script>
+    <!-- also find a way to continously going without having a limit, so far limit might be 20? not sure -->
+
+    <!-- jQuery (required by Materialize) -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Using Underscore for collection manipulation and client-side templatin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <!-- JavaScript for Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script src="javascripts/main.js"></script>
   </body>
-<!-- jQuery (required by Materialize) -->
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<!-- Using Underscore for collection manipulation and client-side templatin -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-<!-- JavaScript for Materialize -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-<!-- <script src="javascripts/app.js"></script> -->
 </html>

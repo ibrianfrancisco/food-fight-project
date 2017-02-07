@@ -1,6 +1,5 @@
 var request = require('request');
 var yelp = require('../../config/yelp');
-const rootURL = 'https://api.yelp.com/';
 
 module.exports = {
   search: search
@@ -8,7 +7,7 @@ module.exports = {
 
 function search(req, res) {
   var term = req.body.term;
-  yelp.search({ term: term, location: req.body.location })
+  yelp.search({ term: term, location: req.body.location, limit: 50 })
   .then(function (data) {
     var jsonBussObj = JSON.parse(data); // Parse JSON string to JSON Object
     console.log(jsonBussObj);
