@@ -14,6 +14,7 @@
     </script>
   </head>
   <body>
+  <!-- Navbar -->
     <a name="home"></a>
     <div id="main-wrapper">
     <div class="navbar-fixed">
@@ -26,7 +27,7 @@
             <$ if (user) { $>
               <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
             <$ } else { $>
-              <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li>
+              <li><a href="/auth/google"><img src="../images/btn_google_light_normal_ios.svg"><!-- <i class="material-icons left">vpn_key</i> -->Login with Google</a></li>
             <$ } $>
           </ul>
         </div>
