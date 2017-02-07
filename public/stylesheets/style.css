@@ -1,11 +1,12 @@
-/*@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');*/
-/*@import url('https://fonts.googleapis.com/css?family=Barrio');*/
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-
 body {
   font-family: 'Raleway', sans-serif;
+}
+
+.login {
+  width: 190px;
 }
 
 #about-header {
@@ -20,25 +21,40 @@ body {
   width: 600px;
 }
 
-
 #main-nav {
   background-color: rgba(225,152,0,.0);
   box-shadow: none;
 }
 
-nav .brand-logo {
-  color: black;
-  /*font-family: 'Gloria Hallelujah', cursive;*/
-  /*font-family: 'Barrio', cursive;*/
-  font-family: 'Lobster', cursive;
+.logo {
+  width: 100px;
   padding-left: 20px;
 }
 
+/*nav .brand-logo {
+  color: white;
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
+  display: inline-block;
+}*/
+
+nav {
+  padding-top: 5px;
+}
+
+nav .brand-name {
+  color: white;
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
+  text-shadow: 2px 2px 4px #000000;
+  display: inline-block;
+  padding-left: 110px;
+}
+
 nav ul a {
-  color: black;
-  /*font-family: 'Gloria Hallelujah', cursive;*/
-  /*font-family: 'Barrio', cursive;*/
+  color: white;
   font-family: 'Raleway', sans-serif;
+  font-weight: bold;
   padding-right: 20px;
 }
 
@@ -60,13 +76,12 @@ nav ul a {
   opacity: .8;
 }
 
-
 #secondary-wrapper {
   width: 100%;
   height: 700px;
 }
 
-#search-wrapper {
+/* #search-wrapper {
   width: 600px;
   height: 200px;
   background-color: rgba(225,225,225,.8);
@@ -74,68 +89,72 @@ nav ul a {
   position: relative;
   top: 30%;
   border-radius: 10px;
-}
+} */
 
-#main-form-wrapper {
+/*#main-form-wrapper {
   height: 100px;
   width: 300px;
   margin: 0 auto;
   position: relative;
   top: 25%;
+}*/
+
+input[type=text] {
+  border-bottom: none;
 }
 
-#search-field {
+.input-field {
   width: 300px;
-  height: 30px;
 }
-
 
 #searchfor-label {
   color: black;
-}
-
-#search-field {
-  width: 800px;
-  height: 50px;
-  margin-bottom: 0;
 }
 
 #form-wrap {
   margin: 0 auto;
   background-color: white;
   width: 800px;
+  height: 60px;
   position: relative;
-  top: 30%;
+  top: 40%;
   border-radius: 6px;
+  white-space: nowrap;
+
 }
 
-#input-field {
+div.input-field {
+  display: inline-block;
+  width: 50%;
+}
+
+/* #input-field {
   margin: 0 auto;
   position: relative;
-}
+} */
 
-#project-name {
+/*#project-name {
   margin-left: 20px;
-}
+}*/
 
-#searchfor-label{
+/*#searchfor-label{
   font-size: 20px;
-}
+}*/
 
-.main-search-submit {
+/*.main-search-submit {
   margin-top: 5px;
-}
+}*/
 
-.search-wrapper {
+/*.search-wrapper {
   height: 100px;
   width: 400px;
   background-color: #f44336;
-}
+}*/
 
-.about-img {
+/*.about-img {
   height: 300px;
   width: 300px;
-}
+}*/
 
 .show-img {
   height: 450px;
@@ -172,20 +191,24 @@ nav ul a {
 /*Testing*/
 ::-webkit-input-placeholder {
    color: #bdbdbd;
+   font-size: 20px;
    padding-left: 5px;
 }
 
 :-moz-placeholder { /* Firefox 18- */
    color: #bdbdbd;
+   font-size: 20px;
    padding-left: 5px;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
    color: #bdbdbd;
+   font-size: 20px;
    padding-left: 5px;
 }
 
 :-ms-input-placeholder {
    color: #bdbdbd;
+   font-size: 20px;
    padding-left: 5px;
 }

@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    var images = ['1.jpg','2.jpg', '3.jpg', '5.jpg', '7.jpg', '9.jpg', '11.jpg', '12.jpg', '13.jpg'];
+    var images = ['1-2.jpg', '2-2.jpg', '3-2.jpg', '5-2.jpg', '7-2.jpg', '9-2.jpg', '11-2.jpg', '12-2.jpg', '13-2.jpg'];
     $(function() {
     $('#main-wrapper').css({'background-image': 'url(/assets/images/' + images[Math.floor(Math.random() * images.length)] + ')'});
     });
@@ -20,38 +20,32 @@
     <div class="navbar-fixed">
       <nav id="main-nav">
         <div class="">
-          <a href="#" id="project-name" class="brand-logo">Food Fight</a>
+          <div class="brand-logo"><a href="#" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
+          <div class="brand-name">Food Fight!</div>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <$ if (user) { $>
               <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
             <$ } else { $>
-              <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li>
+              <li><a href="/auth/google"><img class="login" src="../images/login-google.png"><!-- <i class="material-icons left">vpn_key</i> --></a></li>
             <$ } $>
           </ul>
         </div>
       </nav>
     </div>
-
-      <!-- <div id="search-wrapper">
-        <div id="main-form-wrapper">
-          <form id="main-search" action="">
-            <label id="searchfor-label" for="search">Search for...</label>
-            <input id="search-field" placeholder="Food" type="" name="search">
-            <input id="" class="waves-effect waves-light btn main-search-submit" type="submit" value="Search">
-          </form>
-        </div>
-      </div> -->
       <div id="form-wrap">
         <div class="input-field">
-          <!-- <input placeholder="Search For..." id="search-field" type="text" class="validate"> -->
           <form action="/", method="POST">
-            <input name="term" type="text">
-            <input name="location" type="text">
-            <button type="submit">Submit</button>
+            <input name="term" type="text" placeholder="Italian, boba, babies" type="text">
           </form>
         </div>
+        <div class="input-field">
+          <form action="/", method="POST">
+            <input name="location" type="text" placeholder="Irvine, CA" type="text">
+          </form>
+        </div>
+        <div><button type="submit">FIGHT!</button></div>
       </div>
     </div>
     <a name="about"></a>
@@ -80,8 +74,6 @@
             <p>Choose to accept random restaunt or pass for the next result.</p>
           </div>
         </div>
-        <h2 class="center-align">Sign in with Google to:<h2>
-        <hr id="sign-in-hr">
         <div class="row">
           <div class="col s4">
             <!-- Promo Content 1 goes here -->
