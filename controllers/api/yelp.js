@@ -3,8 +3,7 @@ var yelp = require('../../config/yelp');
 const rootURL = 'https://api.yelp.com/';
 
 module.exports = {
-  search: search,
-  userDetails: userDetails
+  search: search
 }
 
 function search(req, res) {
@@ -18,8 +17,4 @@ function search(req, res) {
   .catch(function (err) {
     console.error('error', err);
   });
-}
-
-function userDetails(req, res) {
-  res.render('index', {title: 'Express'});
 }

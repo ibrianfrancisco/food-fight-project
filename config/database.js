@@ -4,7 +4,6 @@ mongoose.Promise = Promise;
 
 var db = mongoose.connection;
 
-// CARIE START
 mongoose.connect(process.env.DATABASE_URL);
 
 // database connection event
@@ -15,4 +14,3 @@ db.once('open', function () {
 db.on('error', function(err) {
   console.error(`Database error:\n${err}`);
 })
-// CARIE END

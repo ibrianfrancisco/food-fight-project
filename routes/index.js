@@ -1,11 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var yelpCtrl = require('../controllers/api/yelp');
-
-// CARLIE START
 var passport = require('passport');
 var yelp = require('../config/yelp');
-// const rootURL = 'https://api.yelp.com/';
 
 
 /* GET home page. */
@@ -14,7 +11,6 @@ router.get('/', function(req, res, next) {
 });
 
 // Yelp API routes
-router.get('/', yelpCtrl.userDetails);
 router.post('/', yelpCtrl.search);
 
 // OAuth routes
