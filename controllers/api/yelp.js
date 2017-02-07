@@ -9,15 +9,14 @@ module.exports = {
 
 function search(req, res) {
   var term = req.body.term;
-  var location = req.body.location;
-  yelp.search({ term: 'food', location: 'Irvine, Ca', limit: 1 })
+  yelp.search({ term: term, location: req.body.location })
   .then(function (data) {
-    var jsonString = JSON.stringify(data); // convert data to JSON string
-    var jsonBussObj = JSON.parse(jsonString); // Parse JSON string to JSON Object
-    res.render('search-results', {jsonBussObj});
+    var jsonBussObj = JSON.parse(data); // Parse JSON string to JSON Object
+    console.log(jsonBussObj);
+    res.render('show', {jsonBussObj});
   })
   .catch(function (err) {
-    console.error(err);
+    console.error('error', err);
   });
 }
 

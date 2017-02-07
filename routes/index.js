@@ -15,26 +15,7 @@ router.get('/', function(req, res, next) {
 
 // Yelp API routes
 router.get('/', yelpCtrl.userDetails);
-// router.post('/search', yelpCtrl.search);
-router.post('/', function(req, res, next) {
-  var term = req.body.term;
-  // console.log(term);
-  yelp.search({ term: term, location: req.body.location })
-  .then(function (data) {
-    var jsonBussObj = JSON.parse(data); // Parse JSON string to JSON Object
-    // console.log(data);
-    // console.log(jsonBussObj);
-    res.render('index', {jsonBussObj});
-  })
-  .catch(function (err) {
-
-    console.error('error', err);
-  });
-})
-
-
-
-
+router.post('/', yelpCtrl.search);
 
 // OAuth routes
 router.get('/auth/google', passport.authenticate(
