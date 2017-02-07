@@ -1,6 +1,7 @@
 /*@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');*/
 /*@import url('https://fonts.googleapis.com/css?family=Barrio');*/
 @import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 
 #main-nav {
   background-color: rgba(225,152,0,.0);
@@ -12,13 +13,15 @@ nav .brand-logo {
   /*font-family: 'Gloria Hallelujah', cursive;*/
   /*font-family: 'Barrio', cursive;*/
   font-family: 'Lobster', cursive;
+  padding-left: 20px;
 }
 
 nav ul a {
   color: black;
   /*font-family: 'Gloria Hallelujah', cursive;*/
   /*font-family: 'Barrio', cursive;*/
-  font-family: 'Lobster', cursive;
+  font-family: 'Raleway', sans-serif;
+  padding-right: 20px;
 }
 
 #main-wrapper {
@@ -27,7 +30,6 @@ nav ul a {
   position: fixed; 
   left: 0px; 
   top: 0px; 
-
   background-size: 100%;   
   background-position: center center;
   background-repeat: no-repeat;
@@ -36,9 +38,10 @@ nav ul a {
   -moz-user-select: none; 
   -o-user-select: none; 
   user-select: none; 
-  z-index:9990; 
-  /*opacity: .8;*/
+  z-index: 9990; 
+  opacity: .8;
 }
+
 
 #secondary-wrapper {
   width: 100%;
