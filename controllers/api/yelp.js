@@ -17,3 +17,8 @@ function search(req, res) {
     console.error('error', err);
   });
 }
+
+function userDetails(req, res) {
+  res.render('index', {title: 'Express'});
+}
+
