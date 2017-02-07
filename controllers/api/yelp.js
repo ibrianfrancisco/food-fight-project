@@ -11,14 +11,9 @@ function search(req, res) {
   .then(function (data) {
     var jsonBussObj = JSON.parse(data); // Parse JSON string to JSON Object
     console.log(jsonBussObj);
-    res.render('show', {jsonBussObj});
+    res.render('show', {jsonBussObj, user: req.user});
   })
   .catch(function (err) {
     console.error('error', err);
   });
 }
-
-function userDetails(req, res) {
-  res.render('index', {title: 'Express'});
-}
-
