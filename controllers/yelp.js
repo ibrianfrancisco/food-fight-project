@@ -24,3 +24,4 @@ function search(req, res) {
 function userDetails(req, res) {
   res.render('index', {title: 'Express'});
 }
+

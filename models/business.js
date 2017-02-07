@@ -4,11 +4,16 @@ var Schema = mongoose.Schema;
 var businessSchema = new.mongoose.Schema({
 	name: String,
 	url: String,
-	categories: Object,
+	categories: [],
 	image_url: String,
 	id: String,
-	comments: [{type: Schema.Types.ObjectId, ref:"User"}],
-	location: Object
+	location: {
+    city: String,
+    country: String,
+    address1: String,
+    state: String,
+    zipcode: Number
+  }
 });
 
 module.exports = mongoose.model('Business', businessSchema);
