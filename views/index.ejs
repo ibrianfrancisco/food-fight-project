@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    var images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
+    var images = ['1.jpg', '2.jpg', '3.jpg', '5.jpg', '7.jpg', '9.jpg', '11.jpg', '12.jpg', '13.jpg'];
     $(function() {
     $('#main-wrapper').css({'background-image': 'url(/assets/images/' + images[Math.floor(Math.random() * images.length)] + ')'});
     });
@@ -16,22 +16,24 @@
   <body>
     <a name="home"></a>
     <div id="main-wrapper">
-      <div class="navbar-fixed">
-        <nav id="main-nav">
-          <div class="">
-            <a href="#" id="project-name" class="brand-logo">Food Fight</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <$ if (user) { $>
-                <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
-              <$ } else { $>
-                <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li>
-              <$ } $>
-            </ul>
-          </div>
-        </nav>
-      </div>
+    <div class="navbar-fixed">
+      <nav id="main-nav">
+        <div class="">
+          <a href="#" id="project-name" class="brand-logo">Food Fight</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <$ if (user) { $>
+              <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
+            <$ } else { $>
+              <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li>
+            <$ } $>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+
       <!-- <div id="search-wrapper">
         <div id="main-form-wrapper">
           <form id="main-search" action="">
