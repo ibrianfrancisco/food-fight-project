@@ -22,6 +22,84 @@
     </style>
   </head>
   <body>
+
+
+
+
+
+  <div>
+    <nav id="main-nav">
+      <div class="">
+        <a href="#" id="project-name" class="brand-logo">Food Fight</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <$ if (user) { $>
+            <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
+          <$ } else { $>
+            <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li>
+          <$ } $>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <nav>
+          <div class="nav-wrapper">
+            <form class="show-search">
+              <input type="text" placeholder="Food">
+            </form>
+          </div>
+        </nav>
+    </div>
+  </div>
+  <div class="show-wrapper center-align">
+    <div class="row center-align">
+      <div id="about-pane" class="col s6">
+        <h3 class="buisness-name">*Name*</h3>
+        <h5 class="buisness-info">*$$$*</h5>&nbsp&nbsp<h5 class="buisness-info">|</h5>&nbsp&nbsp<h5 class="buisness-info">*rating*</h5><br>
+        <img class="show-img" src="http://lorempixel.com/output/food-q-c-400-400-8.jpg">
+        <!-- Modal trigger -->
+        <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Click to learn more</a> -->
+        <!-- Modal content -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>name</h4>
+            <a href="http://www.google.com">Website</a>
+            <p>Pnone Number: 714-555-5555</p>
+            <ul>
+              <li>Hours:</li>
+              <li>mon: 12-5</li>
+              <li>tue: 12-5</li>
+              <li>wed: 12-5</li>
+              <li>thu: 12-5</li>
+              <li>fri: 12-5</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+          </div>
+        </div>
+        <!-- Modal content end -->
+      </div>
+      <div id="map-pane" class="col s6">
+        <h3 class="buisness-name">*Cross streets*</h3>
+        <img class="show-img" src="http://i.imgur.com/SqmaMjt.gif">
+      </div>
+    </div>
+      <div id="next-btn-col" class="col s12">
+        <div class="next-btn-wrap">
+          <a class="waves-effect waves-light btn-large modal-trigger mid-btn" href="#modal1">Show Info</a>
+          <button class="btn waves-effect waves-light btn-large mid-btn" type="submit" name="action">Next!
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+  </div>
+
+
+
+
+
     <p>I am going to <span id="business-name"></span>'s.</p>
     <div id="business-image" style="height: 500px; width: 500px;"></div>
     <button id="click" onclick="nextBusiness();" id="button">Next</button>
@@ -36,6 +114,12 @@
             id: '<$= business.id $>',
             name: '<$= business.name $>',
             image_url: '<$= business.image_url $>'
+            zip_code:
+            latitude:
+            longitude:
+            address1:
+            city:
+            state:
           },
         <$ }); $>
       ];
@@ -63,6 +147,10 @@
         var next = myIndex++%shuffled.length;
         $('#business-name').html(shuffled[next].name);
         $('#business-image').css({'background-image': 'url(' + shuffled[next].image_url + ')'});
+
+
+
+
       };
 
       var map;
@@ -107,6 +195,10 @@
         });
       }
 
+      $(document).ready(function(){
+          // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+          $('.modal-trigger').leanModal();
+        });
     </script>
     <!-- also find a way to continously going without having a limit, so far limit might be 20? not sure -->
 
@@ -119,6 +211,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="javascripts/main.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<$= process.env.GOOGLE_MAP_JS_KEY $>&q&callback=initMap" async defer></script>
-
   </body>
 </html>
