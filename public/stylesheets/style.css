@@ -137,6 +137,38 @@ nav ul a {
   width: 300px;
 }
 
+.show-img {
+  height: 450px;
+  width: 450px;
+}
+
+.show-wrapper {
+  margin-top: 50px;
+}
+
+.buisness-info {
+  display: inline;
+}
+
+.buisness-name {
+  display: inline;
+}
+
+
+.mid-btn {
+  margin: 10px;
+  width: 200px;
+}
+
+#next-btn-col {
+  position: relative;
+}
+
+.show-search {
+  width: 300px;
+  display: inline-block;
+}
+
 /*Testing*/
 ::-webkit-input-placeholder {
    color: #bdbdbd;
