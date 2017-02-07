@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    var images = ['1.jpg', '2.jpg', '3.jpg', '5.jpg', '7.jpg', '9.jpg', '11.jpg', '12.jpg', '13.jpg'];
+    $(function() {
+    $('#main-wrapper').css({'background-image': 'url(/assets/images/' + images[Math.floor(Math.random() * images.length)] + ')'});
+    });
+    </script>
+  </head>
+  <body>
+  
+    <div id="main-wrapper">
+    <div class="navbar-fixed">
+      <nav id="main-nav">
+        <div class="">
+          <a href="#" id="project-name" class="brand-logo">Food Fight</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <$ if (user) { $>
+              <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
+            <$ } else { $>
+              <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li>
+            <$ } $>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  
+      <!-- <div id="search-wrapper">
+        <div id="main-form-wrapper">
+          <form id="main-search" action="">
+            <label id="searchfor-label" for="search">Search for...</label>
+            <input id="search-field" placeholder="Food" type="" name="search">
+            <input id="" class="waves-effect waves-light btn main-search-submit" type="submit" value="Search">
+          </form>
+        </div>
+      </div> -->
+      <div id="form-wrap">
+        <div class="input-field">
+          <input placeholder="Search For..." id="search-field" type="text" class="validate">
+        </div>
+      </div>
+    </div>
+    <div id="secondary-wrapper">
+    </div>
+    <!-- jQuery (required by Materialize) -->
+     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+     <!-- Using Underscore for collection manipulation and client-side templatin -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+     <!-- JavaScript for Materialize -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+     <!-- <script src="javascripts/app.js"></script> -->
+     <!--<script src="public/javascripts/main.js"></script>-->
+  </body>
+
+  <!-- jQuery (required by Materialize) -->
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <!-- Using Underscore for collection manipulation and client-side templatin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <!-- JavaScript for Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <!-- <script src="javascripts/app.js"></script> -->
+
+</html>
