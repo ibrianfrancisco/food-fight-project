@@ -14,25 +14,24 @@
     </script>
   </head>
   <body>
-  
+    <a name="home"></a>
     <div id="main-wrapper">
-    <div class="navbar-fixed">
-      <nav id="main-nav">
-        <div class="">
-          <a href="#" id="project-name" class="brand-logo">Food Fight</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="">Search</a></li>
-            <li><a href="">Secondary</a></li>
-            <$ if (user) { $>
-              <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
-            <$ } else { $>
-              <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li>
-            <$ } $>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  
+      <div class="navbar-fixed">
+        <nav id="main-nav">
+          <div class="">
+            <a href="#" id="project-name" class="brand-logo">Food Fight</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <$ if (user) { $>
+                <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
+              <$ } else { $>
+                <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li>
+              <$ } $>
+            </ul>
+          </div>
+        </nav>
+      </div>
       <!-- <div id="search-wrapper">
         <div id="main-form-wrapper">
           <form id="main-search" action="">
@@ -48,9 +47,48 @@
         </div>
       </div>
     </div>
+    <a name="about"></a>
     <div id="secondary-wrapper">
+      <div class="">
+        <h2 id="about-header" class="center-align">About Food Fight</h2>
+        <hr id="about-hr">
+        <br>
+        <br>
+        <br>
+        <p class="center-align">We created Food Fight for all the indecisive people who are dying from hunger.</p>
+        <div class="row center-align">
+          <div class="col s4">
+            <h2>Step 1</h2>
+            <img class="about-img" src="https://cdn.pixabay.com/photo/2013/10/01/16/55/magnifying-glass-189254_960_720.png">
+            <p>Search for what your craving.</p>
+          </div>
+          <div class="col s4">
+            <h2>Step 2</h2>
+            <img class="about-img" src="https://lh3.ggpht.com/2ZbR3AYxGipGK-7rv7Zvmz2l1rmaaK8_Ncr9jWE7IdIxfI5lmgfIiFPnC5nZZEsqnRWL=w300">
+            <p>A random restaunt will display.</p>
+          </div>
+          <div class="col s4">
+            <h2>Step 3</h2>
+            <img class="about-img" src="https://lh3.ggpht.com/lDTNHekE09C9nIBPRKR4x5o_AuqeqISqZV0DLBJcd6YBrTUEhstHjRAHTSrvBy-oK-s=w300">
+            <p>Choose to accept random restaunt or pass for the next result.</p>
+          </div>
+        </div>
+        <h2 class="center-align">Sign in with Google to:<h2>
+        <hr id="sign-in-hr">
+        <div class="row">
+          <div class="col s4">
+            <!-- Promo Content 1 goes here -->
+          </div>
+          <div class="col s4">
+            <!-- Promo Content 2 goes here -->
+          </div>
+          <div class="col s4">
+          <!-- Promo Content 3 goes here -->
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- jQuery (required by Materialize) -->
+     <!-- jQuery (required by Materialize) -->
      <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
      <!-- Using Underscore for collection manipulation and client-side templatin -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
