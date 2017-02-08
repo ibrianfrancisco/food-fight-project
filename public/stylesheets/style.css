@@ -5,38 +5,6 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
-.login {
-  width: 190px;
-}
-
-.logo {
-  width: 100px;
-  padding-left: 20px;
-}
-
-nav {
-  padding-top: 5px;
-  background-color: transparent;
-  box-shadow: none;
-}
-
-nav .brand-name {
-  color: white;
-  font-family: 'Lobster', cursive;
-  font-size: 40px;
-  text-shadow: 2px 2px 4px #000000;
-  display: inline-block;
-  padding-left: 110px;
-  padding-top: 5px;
-}
-
-nav ul a {
-  color: white;
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold;
-  padding-right: 20px;
-}
-
 #main-wrapper {
   width: 100%;
   height: 700px;
@@ -125,57 +93,4 @@ div.input-field {
    color: #bdbdbd;
    font-size: 20px;
    padding-left: 5px;
-}
-
-/* Index end*/
-/*show start*/
-.show-img {
-  height: 450px;
-  width: 450px;
-}
-
-.show-wrapper {
-  margin-top: 50px;
-}
-
-.buisness-info {
-  display: inline;
-}
-
-.buisness-name {
-  display: inline;
-}
-
-
-.mid-btn {
-  margin: 10px;
-  width: 200px;
-}
-
-#next-btn-col {
-  position: relative;
-}
-
-.show-search {
-  width: 600px;
-  display: inline-block;
-
-}
-
-.image-container {
-  width: 450px;
-  height: 450px;
-}
-
-/* Always set the map height explicitly to define the size of the div
- * element that contains the map. */
-#map {
-  height: 50%;
-  width: 50%;
-}
-/* Optional: Makes the sample page fill the window. */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
 }
