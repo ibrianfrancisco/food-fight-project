@@ -4,39 +4,43 @@
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link rel='stylesheet' href='/stylesheets/nav.css'/>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/stylesheets/user.css'/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   </head>
   <body>
     <div id="main-wrapper">
       <$ include nav $>
-      <div id="form-wrap">
-        <form action="/search", method="POST">
-          <div class="input-field">
-            <input name="term" type="text" placeholder="Italian, boba, babies" type="text">
-          </div>
-          <div class="input-field">
-            <input name="location" type="text" placeholder="Irvine, CA" type="text">
-          </div>
-          <div class="input-field">
-            <button type="submit">Search</button>
-          </div>
-        </form>
-      </div>
     </div>
-    <div id="secondary-wrapper">
-      <h5>About the Developers</h5>
-      <hr width="500">
-      <br>
-      <p>Brian Francisco, Carlie Clippinger, Chris Baird and Holly Nguyen are students at General Assembly's Web Development Immersive. March 2017 OC cohort. Made with ♥ in California.</p>
-      <br>
-      <p>© Team Gryffindor 2017</p>
+
+    <h1>User Profile</h1>
+
+    <h5>Favorites</h5>
+    <div class="container">
+
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="http://www.annholm.net/wp-content/uploads/2015/08/junk-food.jpg">
+              <!-- <span class="card-title">Card Title</span> -->
+            </div>
+            <div class="card-content">
+              <p>Business Name</p>
+              <p>Business City</p>
+            </div>
+            <div class="card-action">
+              <a href="#">Yelp link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-  <script src="javascripts/main.js"></script>
+  <!-- <script src="javascripts/main.js"></script> -->
   </body>
 </html>
