@@ -5,7 +5,7 @@ module.exports = {
 }
 function search(req, res) {
   var term = req.body.term;
-  yelp.search({ term: term, location: req.body.location, limit: 50 })
+  yelp.search({ term: term, location: req.body.location, limit: 10 })
   .then(function (data) {
     var jsonBussObj = JSON.parse(data); // Parse JSON string to JSON Object
     console.log(jsonBussObj);
