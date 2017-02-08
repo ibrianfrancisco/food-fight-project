@@ -6,15 +6,8 @@
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-    var images = ['1-2.jpg', '2-2.jpg', '3-2.jpg', '5-2.jpg', '7-2.jpg', '9-2.jpg', '11-2.jpg', '12-2.jpg', '13-2.jpg'];
-    $(function() {
-    $('#main-wrapper').css({'background-image': 'url(/assets/images/' + images[Math.floor(Math.random() * images.length)] + ')'});
-    });
-    </script>
   </head>
   <body>
-  <!-- Navbar -->
     <a name="home"></a>
     <div id="main-wrapper">
     <div class="navbar-fixed">
@@ -23,77 +16,43 @@
           <div class="brand-logo"><a href="#" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
           <div class="brand-name">Food Fight!</div>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
+            <!-- <li><a href="">Home</a></li>
+            <li><a href="">About</a></li> -->
             <$ if (user) { $>
               <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
             <$ } else { $>
-              <li><a href="/auth/google"><img class="login" src="../images/login-google.png"><!-- <i class="material-icons left">vpn_key</i> --></a></li>
+              <li><a href="/auth/google"><img class="login" src="../images/login-google.png"></a></li>
             <$ } $>
           </ul>
         </div>
       </nav>
     </div>
       <div id="form-wrap">
-        <div class="input-field">
-          <form action="/", method="POST">
+        <form action="/", method="POST">
+          <div class="input-field">
             <input name="term" type="text" placeholder="Italian, boba, babies" type="text">
-          </form>
-        </div>
-        <div class="input-field">
-          <form action="/", method="POST">
+          </div>
+          <div class="input-field">
             <input name="location" type="text" placeholder="Irvine, CA" type="text">
-          </form>
-        </div>
-        <div><button type="submit">FIGHT!</button></div>
+          </div>
+          <div class="input-field">
+            <button type="submit">Search</button>
+          </div>
+        </form>
       </div>
     </div>
-    <a name="about"></a>
     <div id="secondary-wrapper">
-      <div class="">
-        <h2 id="about-header" class="center-align">About Food Fight</h2>
-        <hr id="about-hr">
-        <br>
-        <br>
-        <br>
-        <p class="center-align">We created Food Fight for all the indecisive people who are dying from hunger.</p>
-        <div class="row center-align">
-          <div class="col s4">
-            <h2>Step 1</h2>
-            <img class="about-img" src="https://cdn.pixabay.com/photo/2013/10/01/16/55/magnifying-glass-189254_960_720.png">
-            <p>Search for what your craving.</p>
-          </div>
-          <div class="col s4">
-            <h2>Step 2</h2>
-            <img class="about-img" src="https://lh3.ggpht.com/2ZbR3AYxGipGK-7rv7Zvmz2l1rmaaK8_Ncr9jWE7IdIxfI5lmgfIiFPnC5nZZEsqnRWL=w300">
-            <p>A random restaunt will display.</p>
-          </div>
-          <div class="col s4">
-            <h2>Step 3</h2>
-            <img class="about-img" src="https://lh3.ggpht.com/lDTNHekE09C9nIBPRKR4x5o_AuqeqISqZV0DLBJcd6YBrTUEhstHjRAHTSrvBy-oK-s=w300">
-            <p>Choose to accept random restaunt or pass for the next result.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s4">
-            <!-- Promo Content 1 goes here -->
-          </div>
-          <div class="col s4">
-            <!-- Promo Content 2 goes here -->
-          </div>
-          <div class="col s4">
-          <!-- Promo Content 3 goes here -->
-          </div>
-        </div>
-      </div>
+      <h5>About the Developers</h5>
+      <hr width="500">
+      <br>
+      <p>Brian Francisco, Carlie Clippinger, Chris Baird and Holly Nguyen are students at General Assembly's Web Development Immersive. March 2017 OC cohort. Made with ♥ in California.</p>
+      <br>
+      <p>© Team Gryffindor 2017</p>
     </div>
-  <!-- jQuery (required by Materialize) -->
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <!-- Using Underscore for collection manipulation and client-side templatin -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-  <!-- JavaScript for Materialize -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-  <!-- <script src="javascripts/app.js"></script> -->
+  <script src="javascripts/main.js"></script>
   </body>
 </html>
