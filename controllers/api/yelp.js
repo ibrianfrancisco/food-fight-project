@@ -1,11 +1,10 @@
 var request = require('request');
 var yelp = require('../../config/yelp');
-
 module.exports = {
   search: search
 }
+function search(req, res) {
 
-function search(req, res, next) {
   var term = req.body.term;
   yelp.search({ term: term, location: req.body.location, limit: 50 })
   .then(function (data) {
@@ -17,5 +16,3 @@ function search(req, res, next) {
     console.error('error', err);
   });
 }
-
-
