@@ -11,21 +11,7 @@
   <body>
   <!-- NAVBAR -->
   <div class="">
-    <nav id="main-nav">
-      <div class="">
-        <div class="brand-logo"><a href="/" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
-        <div class="brand-name">Food Fight!</div>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <$ if (user) { $>
-            <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
-          <$ } else { $>
-            <li><a href="/auth/google"><img class="login" src="../images/login-google.png"><!-- <i class="material-icons left">vpn_key</i> --></a></li>
-          <$ } $>
-        </ul>
-      </div>
-    </nav>
+    <$ include nav $>
     <div class="container">
       <nav>
         <div class="input-field">
@@ -72,7 +58,7 @@
     <div class="row center-align">
       <div id="about-pane" class="col s6">
         <h3 class="buisness-name" id="biz-name">*Name*</h3>
-        <h5 class="buisness-info" id="biz-price"></h5>&nbsp&nbsp<h5 class="buisness-info">|</h5>&nbsp&nbsp<h5 class="buisness-info" id="biz-rating"></h5><br>
+        <h5 class="buisness-info" id="biz-price"></h5>&nbsp&nbsp<h5 class="buisness-info">|</h5>&nbsp&nbsp<div id="image"></div><br>
         <div class="image-container">
           <img class="materialboxed show-img"  id="business-image">
         </div>
@@ -99,7 +85,7 @@
       </div>
 
       <!-- MAP INFO -->
-      <h5 class="biz-map-name">Location</h5>
+      <h3 class="biz-map-name">Location</h3>
       <div class="col s6">
         <div id="map">
         </div>
@@ -161,6 +147,8 @@
       var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
       var map;
       var a = document.getElementById('url');
+
+      //----- Writing Elements in through JQuery ------//
       $('#business-image').css({'background-image': 'url(' + shuffled[0].image_url + ')'});
       $('#biz-name').html(shuffled[0].name);
       $('#modal-biz-name').html(shuffled[0].name);
@@ -168,6 +156,8 @@
       $('#biz-price').html("*" + shuffled[0].price + "*")
       $('#biz-rating').html("*" + shuffled[0].rating + "*")
       $('#favorite').attr('biz-id', shuffled[0].yelp_id);
+      $('#biz-price').html("*" + shuffled[0].price + "*");
+      reviewImage(0);
       a.href = shuffled[0].url;
       //----- FUNCTIONS -----//
       function shuffle(array) {
@@ -196,6 +186,7 @@
         $('#biz-price').html("*" + shuffled[next].price + "*")
         $('#biz-rating').html("*" + shuffled[next].rating + "*")
         $('#favorite').attr('biz-id', shuffled[next].yelp_id);
+        reviewImage(next);
         a.href = shuffled[next].url;
         map = new google.maps.Map(document.getElementById('map'), {
            center: {
@@ -231,36 +222,41 @@
         });
       };
 
-      function reviewImage(img) {
-        var rating = shuffled[next].rating;
-          switch (clickedEl.textContent) {
-            case 'CA':
-              initialize();
+      function reviewImage(idx) {
+        var rating = shuffled[idx].rating;
+          switch (rating) {
+            case 0:
+              return $('#image').append("<img src='../public/images/0-stars.png'>");
               break;
-            case '+':
-              assignOp(add);
+            case 1:
+              return $('#image').append("<img src='../public/images/0-stars.png'>");
               break;
-            case '÷':
-              assignOp(div);
+            case 1.5:
+              return $('#image').append("<img src='../public/images/0-stars.png'>");
               break;
-            case '×':
-              assignOp(multi);
+            case 2:
+              return $('#image').append("<img src='../public/images/0-stars.png'>");
               break;
-            case '-':
-              assignOp(sub);
+            case 2.5:
+              return $('#image').append("<img src='../public/images/0-stars.png'>");
               break;
-            case '=':
-              if (!op || !input) return;
-              result = op(parseFloat(firstNum), parseFloat(input));
+            case 3:
+              return $('#image').append("<img src='../public/images/0-stars.png'>");
               break;
-            case '⃖':
-              input = input.substr(0, input.length -1);
+            case 3.5:
+              return $('#image').append("<img src='../public/images/0-stars.png'>");
               break;
-            case '.':
-              input += input.includes('.') ? '' : '.';
+            case 4:
+              return $('#image').append("<img src='../public/images/0-stars.png'>");
+              break;
+            case 4.5:
+              return $('#image').append("<img src='../public/images/0-stars.png'>");
+              break;
+            case 5:
+              return $('#image').append("<img src='../public/images/0-stars.png'>");
               break;
             default:
-              input += clickedEl.textContent;
+             console.log('suh');
           }
       }
 
