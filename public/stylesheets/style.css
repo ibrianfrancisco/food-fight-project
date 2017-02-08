@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
-
 body {
   font-family: 'Raleway', sans-serif;
 }
-
 #main-wrapper {
   width: 100%;
   height: 700px;
@@ -21,40 +19,33 @@ body {
   z-index: 9990;
   opacity: .8;
 }
-
 #secondary-wrapper {
   width: 100%;
   height: 300px;
   text-align: center;
 }
-
 h5 {
   padding-top: 20px;
 }
-
 p {
   width: 500px;
   margin: auto;
 }
-
 input[type=text] {
   border-bottom: none;
   width: 300px;
   padding-top: 10px;
   padding-left: 7px;
 }
-
 input[type=text]:focus:not([readonly]) {
   border-bottom: none;
   box-shadow: none;
 }
-
 button {
   height: 50px;
   border-radius: 6px;
   padding: 0;
 }
-
 #form-wrap {
   margin: 0 auto;
   background-color: white;
@@ -65,30 +56,25 @@ button {
   border-radius: 6px;
   white-space: nowrap;
 }
-
 div.input-field {
   display: inline-block;
   margin: 0;
 }
-
 ::-webkit-input-placeholder {
    color: #bdbdbd;
    font-size: 20px;
    padding-left: 5px;
 }
-
 :-moz-placeholder { /* Firefox 18- */
    color: #bdbdbd;
    font-size: 20px;
    padding-left: 5px;
 }
-
 ::-moz-placeholder {  /* Firefox 19+ */
    color: #bdbdbd;
    font-size: 20px;
    padding-left: 5px;
 }
-
 :-ms-input-placeholder {
    color: #bdbdbd;
    font-size: 20px;
