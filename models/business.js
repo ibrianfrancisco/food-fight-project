@@ -6,7 +6,6 @@ var businessSchema = new.mongoose.Schema({
 	url: String,
 	categories: [],
 	image_url: String,
-	id: String,
 	location: {
     city: String,
     country: String,

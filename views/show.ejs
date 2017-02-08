@@ -102,6 +102,19 @@
 
   <div id="map"></div>
 
+    <p>I am going to <span id="business-name"></span>'s.</p>
+    <div id="business-image" style="height: 500px; width: 500px;"></div>
+    <button id="click" onclick="nextBusiness();" id="button">Next</button>
+
+    <div id="map"></div>
+    <span class="city"><$= jsonBussObj.businesses[0].location["city"] $></span>
+    <span class="name"><$= jsonBussObj.businesses[0].name $></span>
+
+
+
+    <button id="favorite"> Add to Favorites</button>
+
+
     <script type="text/javascript">
     //----- VARIABLES -----//
       var results = [
@@ -218,6 +231,7 @@
     <!-- JavaScript for Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="javascripts/main.js"></script>
+    <script src="javascripts/favorite.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<$= process.env.GOOGLE_MAP_JS_KEY $>&q&callback=initMap" async defer></script>
   </body>
 </html>

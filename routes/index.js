@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 // Yelp API routes
-router.post('/', yelpCtrl.search);
+router.post('/search', yelpCtrl.search);
 
 // OAuth routes
 router.get('/auth/google', passport.authenticate(
