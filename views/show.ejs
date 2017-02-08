@@ -22,50 +22,51 @@
     </style>
   </head>
   <body>
-
-
-
-
-
-  <div>
+  <!-- NAVBAR -->
+  <div class="">
     <nav id="main-nav">
       <div class="">
-        <a href="#" id="project-name" class="brand-logo">Food Fight</a>
+        <div class="brand-logo"><a href="#" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
+        <div class="brand-name">Food Fight!</div>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <$ if (user) { $>
             <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
           <$ } else { $>
-            <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li>
+            <li><a href="/auth/google"><img class="login" src="../images/login-google.png"><!-- <i class="material-icons left">vpn_key</i> --></a></li>
           <$ } $>
         </ul>
       </div>
     </nav>
     <div class="container">
       <nav>
-          <div class="nav-wrapper">
-            <form class="show-search">
-              <input type="text" placeholder="Food">
-            </form>
-          </div>
-        </nav>
+        <div class="nav-wrapper">
+          <form class="show-search">
+            <input type="text" placeholder="Food">
+          </form>
+        </div>
+      </nav>
     </div>
   </div>
+
+  <!-- BUSINESS INFO -->
   <div class="show-wrapper center-align">
     <div class="row center-align">
       <div id="about-pane" class="col s6">
-        <h3 class="buisness-name">*Name*</h3>
+        <h3 class="buisness-name" id="biz-name">*Name*</h3>
         <h5 class="buisness-info">*$$$*</h5>&nbsp&nbsp<h5 class="buisness-info">|</h5>&nbsp&nbsp<h5 class="buisness-info">*rating*</h5><br>
-        <img class="show-img" src="http://lorempixel.com/output/food-q-c-400-400-8.jpg">
+        <div class="image-container">
+          <img class="show-img" id="business-image">
+        </div>
         <!-- Modal trigger -->
         <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Click to learn more</a> -->
         <!-- Modal content -->
         <div id="modal1" class="modal">
           <div class="modal-content">
-            <h4>name</h4>
-            <a href="http://www.google.com">Website</a>
-            <p>Pnone Number: 714-555-5555</p>
+            <h4 id="modal-biz-name"></h4>
+            <a target="_blank" id="url">Website</a>
+            <p id="phone-number"></p>
             <ul>
               <li>Hours:</li>
               <li>mon: 12-5</li>
@@ -81,43 +82,71 @@
         </div>
         <!-- Modal content end -->
       </div>
+
+
+      <!-- MAP INFO -->
       <div id="map-pane" class="col s6">
         <h3 class="buisness-name">*Cross streets*</h3>
         <img class="show-img" src="http://i.imgur.com/SqmaMjt.gif">
       </div>
     </div>
-      <div id="next-btn-col" class="col s12">
-        <div class="next-btn-wrap">
-          <a class="waves-effect waves-light btn-large modal-trigger mid-btn" href="#modal1">Show Info</a>
-          <button class="btn waves-effect waves-light btn-large mid-btn" type="submit" name="action">Next!
-            <i class="material-icons right">send</i>
-          </button>
-        </div>
+    <div id="next-btn-col" class="col s12">
+      <div class="next-btn-wrap">
+        <a class="waves-effect waves-light btn-large modal-trigger mid-btn" href="#modal1">Show Info</a>
+        <button class="btn waves-effect waves-light btn-large mid-btn" onclick="nextBusiness();" type="submit" name="action">Next!
+          <i class="material-icons right">send</i>
+        </button>
       </div>
+    </div>
   </div>
 
 
 
 
 
-    <p>I am going to <span id="business-name"></span>'s.</p>
-    <div id="business-image" style="height: 500px; width: 500px;"></div>
-    <button id="click" onclick="nextBusiness();" id="button">Next</button>
+    <!-- <div id="business-image" style="height: 500px; width: 500px;"></div> -->
+    <!-- <button id="click" onclick="nextBusiness();" id="button">Next</button> -->
 
     <div id="map"></div>
 
     <script type="text/javascript">
-
+    //----- VARIABLES -----//
       var results = [
         <$ jsonBussObj.businesses.forEach(function(business) { $>
           {
             id: '<$= business.id $>',
             name: '<$= business.name $>',
-            image_url: '<$= business.image_url $>'
+            url: '<$= business.url $>',
+            phone: '<$= business.phone $>',
+            image_url: '<$= business.image_url $>',
+            zip_code: '<$= business.location["zip_code"] $>',
+            latitude: '<$= business.coordinates["latitude"] $>',
+            longitude: '<$= business.coordinates["longitude"] $>',
+            address1: '<$= business.location["address1"] $>',
+            city: '<$= business.location["city"] $>',
+            state: '<$= business.location["state"] $>'
           },
         <$ }); $>
       ];
 
+      var shuffled = shuffle(results);
+      var myIndex = 1;
+      var zip_code = '<$= jsonBussObj.businesses[0].location["zip_code"] $>';
+      var name = '<$= jsonBussObj.businesses[0].name $>'.split(' ').join('+');
+      var map;
+      var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
+      var a = document.getElementById('url');
+
+
+      a.href = shuffled[0].url;
+      $('#business-image').css({'background-image': 'url(' + shuffled[0].image_url + ')'});
+      $('#biz-name').html(shuffled[0].name);
+      $('#modal-biz-name').html(shuffled[0].name);
+      $('#phone-number').html("Phone number: " + shuffled[0].phone);
+
+
+
+      //----- FUNCTIONS -----//
       function shuffle(array) {
         var m = array.length, t, i;
         // While there remain elements to shuffle…
@@ -132,18 +161,18 @@
         return array;
       }
 
-      var shuffled = shuffle(results);
-      var myIndex = 1;
-      $('#business-name').html(shuffled[0].name);
-      $('#business-image').css({'background-image': 'url(' + shuffled[0].image_url + ')'});
-
       function nextBusiness() {
         var next = myIndex++%shuffled.length;
         $('#business-name').html(shuffled[next].name);
         $('#business-image').css({'background-image': 'url(' + shuffled[next].image_url + ')'});
+        $('#biz-name').html(shuffled[next].name);
+        $('#modal-biz-name').html(shuffled[next].name);
+        $('#phone-number').html("Phone number: " + shuffled[next].phone);
+        a.href = shuffled[next].url;
+
+
       };
 
-      var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
            center: {
@@ -159,10 +188,6 @@
           },
           map: map
         });
-        var zip_code = '<$= jsonBussObj.businesses[0].location["zip_code"] $>';
-        var name = '<$= jsonBussObj.businesses[0].name $>'.split(' ').join('+');
-
-        var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
 
         var contentString = '<div id="content">'+
                '<div id="siteNotice">'+
