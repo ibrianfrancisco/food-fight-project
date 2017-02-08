@@ -1,0 +1,92 @@
+/*show start*/
+.show-img {
+  height: 450px;
+  width: 450px;
+  margin: 0 auto;
+}
+
+#show-input {
+  width: 200px;
+  padding-left: 10px;
+}
+
+.show-wrapper {
+  margin-top: 50px;
+}
+.buisness-info {
+  display: inline;
+}
+.buisness-name {
+  display: inline;
+}
+.mid-btn {
+  margin: 10px;
+  width: 200px;
+}
+#next-btn-col {
+  position: relative;
+}
+.show-search {
+  background-color: rgb(0,0,0);
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.dist-sel {
+  width: 100px;
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.rating-sel {
+  width: 100px;
+  display: inline-block;
+  margin-left: 30px;
+}
+
+#price-label {
+  padding-left: 24px;
+}
+
+#show-search-submit {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+#business-image {
+  position: relative;
+  /*float: left;*/
+  width:  450px;
+  height: 450px;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+}
+
+.search-nav {
+  margin-top: 2%;
+}
+
+.biz-map-name {
+  margin: 0;
+  padding: 0;
+}
+
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 450px;
+  width: 450px;
+  margin: 0 auto;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
