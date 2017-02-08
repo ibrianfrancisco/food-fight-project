@@ -68,7 +68,7 @@
         </div>
         <!-- Modal content end -->
       </div>
-
+    <div id="map"></div>
 
       <!-- MAP INFO -->
       <div id="map-pane" class="col s6">
@@ -93,11 +93,9 @@
     <!-- <div id="business-image" style="height: 500px; width: 500px;"></div> -->
     <!-- <button id="click" onclick="nextBusiness();" id="button">Next</button> -->
 
-    <div id="map"></div>
 
     <script type="text/javascript">
     //----- VARIABLES -----//
-
       var results = [
         <$ jsonBussObj.businesses.forEach(function(business) { $>
           {
@@ -107,8 +105,8 @@
             phone: '<$= business.phone $>',
             image_url: '<$= business.image_url $>',
             zip_code: '<$= business.location["zip_code"] $>',
-            latitude: '<$= business.coordinates["latitude"] $>',
-            longitude: '<$= business.coordinates["longitude"] $>',
+            latitude: <$= business.coordinates["latitude"] $>,
+            longitude: <$= business.coordinates["longitude"] $>,
             address1: '<$= business.location["address1"] $>',
             city: '<$= business.location["city"] $>',
             state: '<$= business.location["state"] $>'
@@ -118,10 +116,10 @@
 
       var shuffled = shuffle(results);
       var myIndex = 1;
-      var zip_code = '<$= jsonBussObj.businesses[0].location["zip_code"] $>';
-      var name = '<$= jsonBussObj.businesses[0].name $>'.split(' ').join('+');
-      var map;
+      var zip_code = shuffled[0]["zip_code"];
+      var name = shuffled[0].name.split(' ').join('+');
       var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
+      var map;
       var a = document.getElementById('url');
 
 
@@ -130,7 +128,6 @@
       $('#modal-biz-name').html(shuffled[0].name);
       $('#phone-number').html("Phone number: " + shuffled[0].phone);
       a.href = shuffled[0].url;
-
 
 
       //----- FUNCTIONS -----//
@@ -150,6 +147,10 @@
 
       function nextBusiness() {
         var next = myIndex++%shuffled.length;
+        var zip_code = shuffled[next]["zip_code"];
+        var name = shuffled[next].name.split(' ').join('+');
+        var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
+
         $('#business-name').html(shuffled[next].name);
         $('#business-image').css({'background-image': 'url(' + shuffled[next].image_url + ')'});
         $('#biz-name').html(shuffled[next].name);
@@ -158,15 +159,16 @@
         a.href = shuffled[next].url;
         map = new google.maps.Map(document.getElementById('map'), {
            center: {
-            lat: parseInt(shuffled[next]["latitude"]),
-            lng: parseInt(shuffled[next]["longitude"])
+            lat: shuffled[next]["latitude"],
+            lng: shuffled[next]["longitude"]
           },
            zoom: 15
         });
+
         var marker = new google.maps.Marker({
           position: {
-            lat: parseInt(shuffled[next]["latitude"]),
-            lng: parseInt(shuffled[next]["longitude"])
+            lat: shuffled[next]["latitude"],
+            lng: shuffled[next]["longitude"]
           },
           map: map
         });
@@ -190,47 +192,45 @@
         marker.addListener('click', function() {
           infowindow.open(map, marker);
         });
-
-        console.log(parseInt(shuffled[next]["longitude"]));
-        console.log(shuffled[next]["name"]);
       };
 
       function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-           center: {
-            lat: <$= jsonBussObj.businesses[0].coordinates["latitude"] $>,
-            lng: <$= jsonBussObj.businesses[0].coordinates["longitude"] $>
-          },
-           zoom: 15
-        });
-        var marker = new google.maps.Marker({
-          position: {
-            lat: <$= jsonBussObj.businesses[0].coordinates["latitude"] $>,
-            lng: <$= jsonBussObj.businesses[0].coordinates["longitude"] $>
-          },
-          map: map
-        });
+          map = new google.maps.Map(document.getElementById('map'), {
+             center: {
+              lat: shuffled[0]["latitude"],
+              lng: shuffled[0]["longitude"]
+            },
+             zoom: 15
+          });
 
-        var contentString = '<div id="content">'+
-               '<div id="siteNotice">'+
-               '</div>'+
-               '<h6 id="firstHeading" class="firstHeading"><$= jsonBussObj.businesses[0].name $></h6>'+
-               '<div id="bodyContent">'+
-               '<p><$= jsonBussObj.businesses[0].location["address1"] $>, '+
-               '<$= jsonBussObj.businesses[0].location["city"] $>, '+
-               '<$= jsonBussObj.businesses[0].location["state"] $> '+
-               '<$= jsonBussObj.businesses[0].location["zip_code"] $></p>'+
-               '<a target="_blank" href=' + direction_url + '>Directions</a>'+
-               '</div>'+
-               '</div>';
+          var marker = new google.maps.Marker({
+            position: {
+              lat: shuffled[0]["latitude"],
+              lng: shuffled[0]["longitude"]
+            },
+            map: map
+          });
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-      }
+          var contentString = '<div id="content">'+
+                 '<div id="siteNotice">'+
+                 '</div>'+
+                 '<h6 id="firstHeading" class="firstHeading">'+shuffled[0].name+'</h6>'+
+                 '<div id="bodyContent">'+
+                 '<p>'+shuffled[0]["address1"]+', '+
+                 ''+shuffled[0]["city"]+', '+
+                 ''+shuffled[0]["state"]+' '+
+                 ''+shuffled[0]["zip_code"]+'</p>'+
+                 '<a target="_blank" href=' + direction_url + '>Directions</a>'+
+                 '</div>'+
+                 '</div>';
+
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+        };
 
       $(document).ready(function(){
           // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
