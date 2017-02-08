@@ -87,21 +87,27 @@ div.input-field {
   display: inline-block;
   margin: 0;
 }
+
+/*Testing*/
+
 ::-webkit-input-placeholder {
    color: #bdbdbd;
    font-size: 20px;
    padding-left: 5px;
 }
+
 :-moz-placeholder { /* Firefox 18- */
    color: #bdbdbd;
    font-size: 20px;
    padding-left: 5px;
 }
+
 ::-moz-placeholder {  /* Firefox 19+ */
    color: #bdbdbd;
    font-size: 20px;
    padding-left: 5px;
 }
+
 :-ms-input-placeholder {
    color: #bdbdbd;
    font-size: 20px;
