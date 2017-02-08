@@ -94,3 +94,76 @@ div.input-field {
    font-size: 20px;
    padding-left: 5px;
 }
+
+/* Index end*/
+/*show start*/
+.show-img {
+  height: 450px;
+  width: 450px;
+}
+
+#show-input {
+  width: 200px;
+  padding-left: 10px;
+}
+
+.show-wrapper {
+  margin-top: 50px;
+}
+.buisness-info {
+  display: inline;
+}
+.buisness-name {
+  display: inline;
+}
+.mid-btn {
+  margin: 10px;
+  width: 200px;
+}
+#next-btn-col {
+  position: relative;
+}
+.show-search {
+  background-color: rgb(0,0,0);
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.dist-sel {
+  width: 100px;
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.rating-sel {
+  width: 100px;
+  display: inline-block;
+  margin-left: 30px;
+}
+
+#price-label {
+  padding-left: 24px;
+}
+
+#show-search-submit {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.image-container {
+  width: 450px;
+  height: 450px;
+}
+
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 50%;
+  width: 50%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

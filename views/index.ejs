@@ -11,13 +11,30 @@
   <body>
     <div id="main-wrapper">
       <$ include nav $>
+    <div class="navbar-fixed">
+      <nav id="main-nav">
+        <div class="">
+          <div class="brand-logo"><a href="/" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
+          <div class="brand-name">Food Fight!</div>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <!-- <li><a href="">Home</a></li>
+            <li><a href="">About</a></li> -->
+            <$ if (user) { $>
+              <li><a href="/logout"><i class="material-icons left">trending_flat</i>Logout</a></li>
+            <$ } else { $>
+              <li><a href="/auth/google"><img class="login" src="../images/login-google.png"></a></li>
+            <$ } $>
+          </ul>
+        </div>
+      </nav>
+    </div>
       <div id="form-wrap">
         <form action="/search", method="POST">
           <div class="input-field">
-            <input name="term" type="text" placeholder="Italian, boba, babies" type="text">
+            <input name="term" type="text" placeholder="Italian, boba, babies.." type="text">
           </div>
           <div class="input-field">
-            <input name="location" type="text" placeholder="Irvine, CA" type="text">
+            <input name="location" type="text" placeholder="Irvine, CA" type="text" required>
           </div>
           <div class="input-field">
             <button type="submit">Search</button>

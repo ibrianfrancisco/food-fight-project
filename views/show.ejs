@@ -12,7 +12,7 @@
   <div class="">
     <nav id="main-nav">
       <div class="">
-        <div class="brand-logo"><a href="#" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
+        <div class="brand-logo"><a href="/" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
         <div class="brand-name">Food Fight!</div>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#home">Home</a></li>
@@ -27,9 +27,39 @@
     </nav>
     <div class="container">
       <nav>
-        <div class="nav-wrapper">
-          <form class="show-search">
-            <input type="text" placeholder="Food">
+        <div class="input-field">
+          <form class="show-search" action="/search" method="POST">
+            <input id="show-input" type="text" placeholder="Italian, boba, babies.." value="<$= term $>" name="term">
+            <input id="show-input" type="text" placeholder="Zip, address, etc." value="<$= location $>" class="show" name="location" required>
+            <span>Price</span>
+            <span>
+              <input name="group1" type="radio" id="test1" />
+              <label id="price-label" name="price" value="1,2" for="test1">Cheap</label>
+            </span>
+            <span>
+              <input name="group1" type="radio" id="test2" />
+              <label id="price-label" name="price" value="3,4" for="test2">Fancy</label>
+            </span>
+            <div class="dist-sel">
+              <select>
+                <option value="">Distance</option>
+                <option value="1">5 Miles</option>
+                <option value="2">10 Miles</option>
+                <option value="3">15 Miles</option>
+              </select>
+            </div>
+            <div class="rating-sel">
+              <select>
+                <option value="">Rating</option>
+                <option value="1">*</option>
+                <option value="2">**</option>
+                <option value="3">***</option>
+                <option value="3">****</option>
+                <option value="3">*****</option>
+              </select>
+            </div>
+            <button id="show-search-submit" class="btn waves-effect waves-light" type="submit" name="action">Go
+            </button>
           </form>
         </div>
       </nav>
@@ -41,7 +71,7 @@
     <div class="row center-align">
       <div id="about-pane" class="col s6">
         <h3 class="buisness-name" id="biz-name">*Name*</h3>
-        <h5 class="buisness-info">*$$$*</h5>&nbsp&nbsp<h5 class="buisness-info">|</h5>&nbsp&nbsp<h5 class="buisness-info">*rating*</h5><br>
+        <h5 class="buisness-info" id="biz-price"></h5>&nbsp&nbsp<h5 class="buisness-info">|</h5>&nbsp&nbsp<h5 class="buisness-info" id="biz-rating"></h5><br>
         <div class="image-container">
           <img class="show-img" height="100" id="business-image">
         </div>
@@ -68,7 +98,6 @@
         </div>
         <!-- Modal content end -->
       </div>
-    <div id="map"></div>
 
       <!-- MAP INFO -->
       <div id="map-pane" class="col s6">
@@ -88,14 +117,14 @@
 
 
 
+  <div id="map"></div>
 
 
-    <!-- <div id="business-image" style="height: 500px; width: 500px;"></div> -->
-    <!-- <button id="click" onclick="nextBusiness();" id="button">Next</button> -->
 
 
     <script type="text/javascript">
     //----- VARIABLES -----//
+
       var results = [
         <$ jsonBussObj.businesses.forEach(function(business) { $>
           {
@@ -109,7 +138,9 @@
             longitude: <$= business.coordinates["longitude"] $>,
             address1: '<$= business.location["address1"] $>',
             city: '<$= business.location["city"] $>',
-            state: '<$= business.location["state"] $>'
+            state: '<$= business.location["state"] $>',
+            price: '<$= business.price $>',
+            rating: <$= business.rating $>
           },
         <$ }); $>
       ];
@@ -127,6 +158,8 @@
       $('#biz-name').html(shuffled[0].name);
       $('#modal-biz-name').html(shuffled[0].name);
       $('#phone-number').html("Phone number: " + shuffled[0].phone);
+      $('#biz-price').html("*" + shuffled[0].price + "*")
+      $('#biz-rating').html("*" + shuffled[0].rating + "*")
       a.href = shuffled[0].url;
 
 
@@ -156,6 +189,8 @@
         $('#biz-name').html(shuffled[next].name);
         $('#modal-biz-name').html(shuffled[next].name);
         $('#phone-number').html("Phone number: " + shuffled[next].phone);
+        $('#biz-price').html("*" + shuffled[next].price + "*")
+        $('#biz-rating').html("*" + shuffled[next].rating + "*")
         a.href = shuffled[next].url;
         map = new google.maps.Map(document.getElementById('map'), {
            center: {
@@ -193,6 +228,39 @@
           infowindow.open(map, marker);
         });
       };
+
+      function reviewImage(img) {
+        var rating = shuffled[next].rating;
+          switch (clickedEl.textContent) {
+            case 'CA':
+              initialize();
+              break;
+            case '+':
+              assignOp(add);
+              break;
+            case '÷':
+              assignOp(div);
+              break;
+            case '×':
+              assignOp(multi);
+              break;
+            case '-':
+              assignOp(sub);
+              break;
+            case '=':
+              if (!op || !input) return;
+              result = op(parseFloat(firstNum), parseFloat(input));
+              break;
+            case '⃖':
+              input = input.substr(0, input.length -1);
+              break;
+            case '.':
+              input += input.includes('.') ? '' : '.';
+              break;
+            default:
+              input += clickedEl.textContent;
+          }
+      }
 
       function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
@@ -236,6 +304,10 @@
           // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
           $('.modal-trigger').leanModal();
         });
+
+      $(document).ready(function() {
+                $('select').material_select();
+              });
     </script>
     <!-- also find a way to continously going without having a limit, so far limit might be 20? not sure -->
 
