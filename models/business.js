@@ -1,19 +1,19 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var businessSchema = new.mongoose.Schema({
+var businessSchema = new mongoose.Schema({
 	name: String,
+  yelp_id: String,
 	url: String,
-	categories: [],
+  phone: String,
 	image_url: String,
-	id: String,
-	location: {
-    city: String,
-    country: String,
-    address1: String,
-    state: String,
-    zipcode: Number
-  }
+  city: String,
+  country: String,
+  address1: String,
+  state: String,
+  zip_code: String,
+  latitude: Number,
+  longitude: Number
 });
 
 module.exports = mongoose.model('Business', businessSchema);
