@@ -104,19 +104,22 @@
       </div>
     </div>
   </div>
-    <!-- <div id="map"></div> -->
 
-  <div id="map"></div>
+  <$ if (user) { $>
+    <span id='fav'><button id="favorite" >Add to Favorites</button></span>
+    <span><a href="/users/<$= user.id $>"><$= user.userName $></a></span>
+  <$ } else { $>
+    <span>Login to save!</span>
+  <$ } $>
 
-    <p>I am going to <span id="business-name"></span>'s.</p>
-    <div id="business-image" style="height: 500px; width: 500px;"></div>
-    <button id="click" onclick="nextBusiness();" id="button">Next</button>
+  <span></span>
 
-    <div id="map"></div>
-    <span class="city"><$= jsonBussObj.businesses[0].location["city"] $></span>
-    <span class="name"><$= jsonBussObj.businesses[0].name $></span>
 
-    <button id="favorite"> Add to Favorites</button>
+
+
+    <!-- <div id="business-image" style="height: 500px; width: 500px;"></div> -->
+    <!-- <button id="click" onclick="nextBusiness();" id="button">Next</button> -->
+
 
 
     <script type="text/javascript">
@@ -124,7 +127,7 @@
       var results = [
         <$ jsonBussObj.businesses.forEach(function(business) { $>
           {
-            id: '<$= business.id $>',
+            yelp_id: '<$= business.id $>',
             name: '<$= business.name $>',
             url: '<$= business.url $>',
             phone: '<$= business.phone $>',
@@ -134,11 +137,11 @@
             longitude: <$= business.coordinates["longitude"] $>,
             address1: '<$= business.location["address1"] $>',
             city: '<$= business.location["city"] $>',
-            state: '<$= business.location["state"] $>'
+            state: '<$= business.location["state"] $>',
+            country: '<$= business.location["country"] $>'
           },
         <$ }); $>
       ];
-
       var shuffled = shuffle(results);
       var myIndex = 1;
       var zip_code = shuffled[0]["zip_code"];
@@ -146,15 +149,12 @@
       var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
       var map;
       var a = document.getElementById('url');
-
-
       $('#business-image').css({'background-image': 'url(' + shuffled[0].image_url + ')'});
       $('#biz-name').html(shuffled[0].name);
       $('#modal-biz-name').html(shuffled[0].name);
       $('#phone-number').html("Phone number: " + shuffled[0].phone);
+      $('#favorite').attr('biz-id', shuffled[0].yelp_id);
       a.href = shuffled[0].url;
-
-
       //----- FUNCTIONS -----//
       function shuffle(array) {
         var m = array.length, t, i;
@@ -169,18 +169,17 @@
         }
         return array;
       }
-
       function nextBusiness() {
         var next = myIndex++%shuffled.length;
         var zip_code = shuffled[next]["zip_code"];
         var name = shuffled[next].name.split(' ').join('+');
         var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
-
         $('#business-name').html(shuffled[next].name);
         $('#business-image').css({'background-image': 'url(' + shuffled[next].image_url + ')'});
         $('#biz-name').html(shuffled[next].name);
         $('#modal-biz-name').html(shuffled[next].name);
         $('#phone-number').html("Phone number: " + shuffled[next].phone);
+        $('#favorite').attr('biz-id', shuffled[next].yelp_id);
         a.href = shuffled[next].url;
         map = new google.maps.Map(document.getElementById('map'), {
            center: {
@@ -189,7 +188,6 @@
           },
            zoom: 15
         });
-
         var marker = new google.maps.Marker({
           position: {
             lat: shuffled[next]["latitude"],
@@ -197,7 +195,6 @@
           },
           map: map
         });
-
         var contentString = '<div id="content">'+
                '<div id="siteNotice">'+
                '</div>'+
@@ -210,7 +207,6 @@
                '<a target="_blank" href=' + direction_url + '>Directions</a>'+
                '</div>'+
                '</div>';
-
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -218,7 +214,6 @@
           infowindow.open(map, marker);
         });
       };
-
       function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
              center: {
@@ -227,7 +222,6 @@
             },
              zoom: 15
           });
-
           var marker = new google.maps.Marker({
             position: {
               lat: shuffled[0]["latitude"],
@@ -235,7 +229,6 @@
             },
             map: map
           });
-
           var contentString = '<div id="content">'+
                  '<div id="siteNotice">'+
                  '</div>'+
@@ -248,7 +241,6 @@
                  '<a target="_blank" href=' + direction_url + '>Directions</a>'+
                  '</div>'+
                  '</div>';
-
           var infowindow = new google.maps.InfoWindow({
             content: contentString
           });
@@ -256,7 +248,6 @@
             infowindow.open(map, marker);
           });
         };
-
       $(document).ready(function(){
           // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
           $('.modal-trigger').leanModal();
