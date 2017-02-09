@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
+
 body {
   font-family: 'Raleway', sans-serif;
 }
+
 #main-wrapper {
   width: 100%;
   height: 700px;
@@ -11,36 +13,62 @@ body {
   background-size: 100%;
   background-position: center center;
   background-repeat: no-repeat;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
   z-index: 9990;
   opacity: .8;
 }
-#secondary-wrapper {
-  width: 100%;
-  height: 300px;
-  text-align: center;
+
+#form-wrap {
+  margin: 0 auto;
+  background-color: white;
+  width: 600px;
+  height: 50px;
+  position: relative;
+  top: 40%;
+  border-radius: 6px;
+  white-space: nowrap;
 }
-h5 {
-  padding-top: 20px;
+
+form:after {
+  content:"";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  height: 2.5em;
+  margin: 5px 0;
+  border-left: 1px solid #bdbdbd;
 }
-p {
-  width: 500px;
-  margin: auto;
-}
+
 input[type=text] {
   border-bottom: none;
   width: 300px;
   padding-top: 10px;
   padding-left: 7px;
 }
+
 input[type=text]:focus:not([readonly]) {
   border-bottom: none;
   box-shadow: none;
 }
+
+div.input-field {
+  display: inline-block;
+  margin: 0;
+}
+
+input-placeholder {
+  color: #bdbdbd;
+  font-size: 20px;
+  padding-left: 5px;
+}
+
+#main-search-inputs {
+  margin-bottom: 0;
+  padding-top: 0;
+  font-size: 20px;
+  width: 294px;
+}
+
 button {
   height: 50px;
   width: 50px;
@@ -54,44 +82,17 @@ i.material-icons {
   color: white;
 }
 
-#form-wrap {
-  margin: 0 auto;
-  background-color: white;
-  width: 600px;
-  height: 50px;
-  position: relative;
-  top: 40%;
-  border-radius: 6px;
-  white-space: nowrap;
-}
-div.input-field {
-  display: inline-block;
-  margin: 0;
-}
-::-webkit-input-placeholder {
-   color: #bdbdbd;
-   font-size: 20px;
-   padding-left: 5px;
-}
-:-moz-placeholder { /* Firefox 18- */
-   color: #bdbdbd;
-   font-size: 20px;
-   padding-left: 5px;
-}
-::-moz-placeholder {  /* Firefox 19+ */
-   color: #bdbdbd;
-   font-size: 20px;
-   padding-left: 5px;
-}
-:-ms-input-placeholder {
-   color: #bdbdbd;
-   font-size: 20px;
-   padding-left: 5px;
+#secondary-wrapper {
+  width: 100%;
+  height: 230px;
+  text-align: center;
 }
 
-#main-search-inputs {
-  margin-bottom: 0;
-  padding-top: 0;
-  font-size: 20px;
-  width: 295px;
+h5 {
+  padding-top: 20px;
+}
+
+p {
+  width: 500px;
+  margin: auto;
 }
