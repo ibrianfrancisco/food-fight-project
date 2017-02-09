@@ -3,12 +3,8 @@ var businessCtrl = require('../controllers/businesses');
 var apiCtrl = require('../controllers/api/api');
 
 
-// GET /api/students
-// router.get('/students', studentsCtrl.index);
 router.post('/biz', isLoggedIn, businessCtrl.addBiz);
-
-// DELETE /api/facts/:id
-// router.delete('/facts/:id', isLoggedIn, businessCtrl.delete);
+router.delete('/delete/:id', isLoggedIn, businessCtrl.deleteFav);
 
 function isLoggedIn(req, res, next) {
   if(req.isAuthenticated()) return next();
@@ -24,7 +20,7 @@ router.post('/', apiCtrl.createUser);
 router.put('/:id', apiCtrl.updateUser);
 router.delete('/:id', apiCtrl.deleteUser);
 
-router.get('/businesses', apiCtrl.getAllBusinesses);
+router.get('/businesses/', apiCtrl.getAllBusinesses);
 router.get('/business/:id', apiCtrl.getOneBusiness);
 router.post('/business', apiCtrl.createBusiness);
 router.put('/business/:id', apiCtrl.updateBusiness);
