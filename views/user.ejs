@@ -12,35 +12,39 @@
     <div id="main-wrapper">
       <$ include nav $>
     </div>
-
-    <h1>User Profile</h1>
-    <p><$= user.userName $></p>
+    <br><br>
+    <div class="jumbotron">
+      <!-- <hr> -->
+      <div  class="center-align" ><img src="<$= user.profileImage $>"></div>
+      <h4 class="center-align"><$= user.userName $></h4>
+    </div>
     <div class="container">
-      <h5>Favorites</h5>
+      <h5>My Favorites</h5>
 
+        <div class="row">
         <$ if (user.favorites.length === 0) { $>
           <p>None</p>
         <$ } else { $>
           <$ user.favorites.forEach(function(fav) { $>
-            <div class="row">
               <div class="col s12 m4">
                 <div class="card">
                   <div class="card-image">
                     <img src="<$= fav.image_url $>">
+                    <span class="card-title"><$= fav.name $></span>
                     <!-- <span class="card-title">Card Title</span> -->
                   </div>
                   <div class="card-content">
-                    <p><$= fav.name $></p>
-                    <p><$= fav.city $></p>
+                    <p><$= fav.address1 $>,<br><$= fav.city $>, <$= fav.state $> <$= fav.zip_code $></p>
+                    <p><$= fav.price $></p>
                   </div>
-                  <div class="card-action">
+                  <div class="card-action hoverable">
                     <a href="<$= fav.url $>">Yelp link</a>
                   </div>
                 </div>
               </div>
-            </div>
           <$ }) $>
         <$ } $>
+        </div>
 
 
 

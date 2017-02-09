@@ -13,7 +13,10 @@ var businessSchema = new mongoose.Schema({
   state: String,
   zip_code: String,
   latitude: Number,
-  longitude: Number
+  longitude: Number,
+  price: String,
+  rating: Number,
+  review_count: Number
 });
 
 module.exports = mongoose.model('Business', businessSchema);
