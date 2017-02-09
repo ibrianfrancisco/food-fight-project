@@ -4,7 +4,7 @@ $(document).ready(function(){
     var bizId = $(this).find('a').attr('biz-id');
     $(this).remove();
     $.ajax({
-      url: '/api/delete/' + bizId,
+      url: '/api/businesses/delete/' + bizId,
       type: "DELETE",
       data: bizId,
       success: function(data, textStatus, jqXHR) {
