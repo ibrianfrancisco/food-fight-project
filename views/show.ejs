@@ -58,12 +58,6 @@
                 <option value="3,4">Fancy</option>
               </select>
             </div>
-            <div class="rating-sel">
-              <select name="open">
-                <option value="false">All</option>
-                <option value="true">Open</option>
-              </select>
-            </div>
             <button id="show-search-submit" class="btn waves-effect waves-light" type="submit" name="action">Go
             </button>
             </div>
@@ -224,7 +218,6 @@
         var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
 
         $('#business-name').html(shuffled[next].name);
-        $('#business-image').css({'background-image': 'url(' + shuffled[next].image_url + ')'});
         $('#biz-name').html(shuffled[next].name);
         $('#modal-biz-name').html(shuffled[next].name);
         $('#phone-number').html("Phone number: " + shuffled[next].phone);
@@ -232,7 +225,8 @@
         reviewImage(next);
         $('#favorite').attr('biz-id', shuffled[next].yelp_id);
         a.href = shuffled[next].url;
-
+        if (shuffled[next].image_url === '') return $('#business-image').css({"background-image": "url(/images/no-image.png)"});
+        $('#business-image').css({'background-image': 'url(' + shuffled[next].image_url + ')'});
       };
 
       function reviewImage(idx) {
