@@ -86,6 +86,11 @@
   margin: 0 auto;
 }
 
+#image {
+  height: 30px;
+  width: 141px;
+}
+
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
 #map {

@@ -15,26 +15,22 @@
     <div class="">
       <nav class="search-nav">
         <div class="input-field">
-          <form class="show-search">
+          <form class="show-search" action="/search" method="POST">
             <div class="inner-form-wrap">
-            <input id="show-input" type="text" placeholder="Food">
-            <input id="show-input" type="text" placeholder="Location" class="show">
+            <input id="show-input" type="text" placeholder="Italian, boba, babies.." value="<$= term $>" name="term">
+            <input id="show-input" type="text" placeholder="Zip, address, etc." value="<$= location $>" class="show" name="location" required>
             <span>Price</span>
             <span>
               <input name="group1" type="radio" id="test1" />
-              <label id="price-label" for="test1">Cheap</label>
+              <label id="price-label" name="price" value="1,2" for="test1">Cheap</label>
             </span>
             <span>
               <input name="group1" type="radio" id="test2" />
-              <label id="price-label" for="test2">Fancy</label>
+              <label id="price-label" name="price" value="3,4" for="test2">Fancy</label>
             </span>
-            <!-- <span>
-              <input class="with-gap" name="group1" type="radio" id="test3"  />
-              <label id="price-label" for="test3">$$$</label>
-            </span> -->
             <div class="dist-sel">
               <select>
-                <option value="" disabled selected>Distance</option>
+                <option value="">Distance</option>
                 <option value="1">5 Miles</option>
                 <option value="2">10 Miles</option>
                 <option value="3">15 Miles</option>
@@ -42,7 +38,7 @@
             </div>
             <div class="rating-sel">
               <select>
-                <option value="" disabled selected>Rating</option>
+                <option value="">Rating</option>
                 <option value="1">*</option>
                 <option value="2">**</option>
                 <option value="3">***</option>
@@ -63,8 +59,8 @@
   <div class="show-wrapper center-align">
     <div class="row center-align">
       <div id="about-pane" class="col s6">
-        <h5 class="buisness-name" id="biz-name">*Name*</h5>
-        <h5 class="buisness-info">*$$$*</h5>&nbsp&nbsp<h5 class="buisness-info">|</h5>&nbsp&nbsp<h5 class="buisness-info">*rating*</h5><br>
+        <h4 class="buisness-name" id="biz-name"></h4><h4 class="buisness-info">&nbsp|</h4>
+        <h4 class="buisness-info" id="biz-price"></h4>&nbsp&nbsp<h4 class="buisness-info">|</h4>&nbsp&nbsp<img id="image"><br>
         <div class="image-container">
           <img class="materialboxed show-img"  id="business-image">
         </div>
@@ -91,7 +87,7 @@
       </div>
 
       <!-- MAP INFO -->
-      <h5 class="biz-map-name">Location</h5>
+      <h4 class="biz-map-name">Location</h4>
       <div class="col s6">
         <div id="map">
         </div>
@@ -117,19 +113,19 @@
   <span></span>
 
 
+  <div id="map"></div>
 
 
-    <!-- <div id="business-image" style="height: 500px; width: 500px;"></div> -->
-    <!-- <button id="click" onclick="nextBusiness();" id="button">Next</button> -->
 
 
 
     <script type="text/javascript">
     //----- VARIABLES -----//
+
       var results = [
         <$ jsonBussObj.businesses.forEach(function(business) { $>
           {
-            yelp_id: '<$= business.id $>',
+            id: '<$= business.id $>',
             name: '<$= business.name $>',
             url: '<$= business.url $>',
             phone: '<$= business.phone $>',
@@ -140,7 +136,10 @@
             address1: '<$= business.location["address1"] $>',
             city: '<$= business.location["city"] $>',
             state: '<$= business.location["state"] $>',
-            country: '<$= business.location["country"] $>'
+            price: '<$= business.price $>',
+            rating: <$= business.rating $>,
+            country: '<$= business.location["country"] $>',
+            review_count: <$= business.review_count $>
           },
         <$ }); $>
       ];
@@ -151,12 +150,18 @@
       var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
       var map;
       var a = document.getElementById('url');
+
+      //----- Writing Elements in through JQuery ------//
       $('#business-image').css({'background-image': 'url(' + shuffled[0].image_url + ')'});
       $('#biz-name').html(shuffled[0].name);
       $('#modal-biz-name').html(shuffled[0].name);
       $('#phone-number').html("Phone number: " + shuffled[0].phone);
+      $('#biz-price').html(shuffled[0].price);
+      reviewImage(0);
       $('#favorite').attr('biz-id', shuffled[0].yelp_id);
       a.href = shuffled[0].url;
+
+
       //----- FUNCTIONS -----//
       function shuffle(array) {
         var m = array.length, t, i;
@@ -171,16 +176,20 @@
         }
         return array;
       }
+
       function nextBusiness() {
         var next = myIndex++%shuffled.length;
         var zip_code = shuffled[next]["zip_code"];
         var name = shuffled[next].name.split(' ').join('+');
         var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
+
         $('#business-name').html(shuffled[next].name);
         $('#business-image').css({'background-image': 'url(' + shuffled[next].image_url + ')'});
         $('#biz-name').html(shuffled[next].name);
         $('#modal-biz-name').html(shuffled[next].name);
         $('#phone-number').html("Phone number: " + shuffled[next].phone);
+        $('#biz-price').html(shuffled[next].price)
+        reviewImage(next);
         $('#favorite').attr('biz-id', shuffled[next].yelp_id);
         a.href = shuffled[next].url;
         map = new google.maps.Map(document.getElementById('map'), {
@@ -190,6 +199,7 @@
           },
            zoom: 15
         });
+
         var marker = new google.maps.Marker({
           position: {
             lat: shuffled[next]["latitude"],
@@ -197,6 +207,7 @@
           },
           map: map
         });
+
         var contentString = '<div id="content">'+
                '<div id="siteNotice">'+
                '</div>'+
@@ -209,6 +220,7 @@
                '<a target="_blank" href=' + direction_url + '>Directions</a>'+
                '</div>'+
                '</div>';
+
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -216,6 +228,45 @@
           infowindow.open(map, marker);
         });
       };
+
+      function reviewImage(idx) {
+        var rating = shuffled[idx].rating;
+          switch (rating) {
+            case 0:
+              return $('#image').attr('src', '../images/0-stars.png');
+              break;
+            case 1:
+              return $('#image').attr('src', '../images/1-stars.png');
+              break;
+            case 1.5:
+              return $('#image').attr('src', '../images/1-and-half-stars.png');
+              break;
+            case 2:
+              return $('#image').attr('src', '../images/2-stars.png');
+              break;
+            case 2.5:
+              return $('#image').attr('src', '../images/2-and-half-stars.png');
+              break;
+            case 3:
+              return $('#image').attr('src', '../images/3-stars.png');
+              break;
+            case 3.5:
+              return $('#image').attr('src', '../images/3-and-half-stars.png');
+              break;
+            case 4:
+              return $('#image').attr('src', '../images/4-stars.png');
+              break;
+            case 4.5:
+              return $('#image').attr('src', '../images/4-and-half-stars.png');
+              break;
+            case 5:
+              return $('#image').attr('src', '../images/5-stars.png');
+              break;
+            default:
+              return $('#image').html('No reviews yet');
+          }
+      }
+
       function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
              center: {
@@ -224,6 +275,7 @@
             },
              zoom: 15
           });
+
           var marker = new google.maps.Marker({
             position: {
               lat: shuffled[0]["latitude"],
@@ -231,6 +283,7 @@
             },
             map: map
           });
+
           var contentString = '<div id="content">'+
                  '<div id="siteNotice">'+
                  '</div>'+
@@ -243,6 +296,7 @@
                  '<a target="_blank" href=' + direction_url + '>Directions</a>'+
                  '</div>'+
                  '</div>';
+
           var infowindow = new google.maps.InfoWindow({
             content: contentString
           });
@@ -250,11 +304,11 @@
             infowindow.open(map, marker);
           });
         };
+
       $(document).ready(function(){
           // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
           $('.modal-trigger').leanModal();
         });
-
 
       $(document).ready(function() {
           $('select').material_select();
