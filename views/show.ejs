@@ -59,7 +59,7 @@
   <div class="show-wrapper center-align">
     <div class="row center-align">
       <div id="about-pane" class="col s6">
-        <h4 class="buisness-name" id="biz-name">*Name*</h4>
+        <h4 class="buisness-name" id="biz-name"></h4><h4 class="buisness-info">&nbsp|</h4>
         <h4 class="buisness-info" id="biz-price"></h4>&nbsp&nbsp<h4 class="buisness-info">|</h4>&nbsp&nbsp<img id="image"><br>
         <div class="image-container">
           <img class="materialboxed show-img"  id="business-image">
@@ -102,8 +102,15 @@
       </div>
     </div>
   </div>
-    <!-- <div id="map"></div> -->
 
+  <$ if (user) { $>
+    <span id='fav'><button id="favorite" >Add to Favorites</button></span>
+    <span><a href="/users/<$= user.id $>"><$= user.userName $></a></span>
+  <$ } else { $>
+    <span>Login to save!</span>
+  <$ } $>
+
+  <span></span>
 
 
   <div id="map"></div>
@@ -133,11 +140,9 @@
             rating: <$= business.rating $>,
             country: '<$= business.location["country"] $>',
             review_count: <$= business.review_count $>
-
           },
         <$ }); $>
       ];
-
       var shuffled = shuffle(results);
       var myIndex = 1;
       var zip_code = shuffled[0]["zip_code"];
@@ -151,7 +156,7 @@
       $('#biz-name').html(shuffled[0].name);
       $('#modal-biz-name').html(shuffled[0].name);
       $('#phone-number').html("Phone number: " + shuffled[0].phone);
-      $('#biz-price').html("*" + shuffled[0].price + "*");
+      $('#biz-price').html(shuffled[0].price);
       reviewImage(0);
       $('#favorite').attr('biz-id', shuffled[0].yelp_id);
       a.href = shuffled[0].url;
@@ -183,7 +188,7 @@
         $('#biz-name').html(shuffled[next].name);
         $('#modal-biz-name').html(shuffled[next].name);
         $('#phone-number').html("Phone number: " + shuffled[next].phone);
-        $('#biz-price').html("*" + shuffled[next].price + "*")
+        $('#biz-price').html(shuffled[next].price)
         reviewImage(next);
         $('#favorite').attr('biz-id', shuffled[next].yelp_id);
         a.href = shuffled[next].url;
@@ -258,7 +263,7 @@
               return $('#image').attr('src', '../images/5-stars.png');
               break;
             default:
-             console.log('suh');
+              return $('#image').html('No reviews yet');
           }
       }
 
@@ -323,6 +328,7 @@
     <!-- JavaScript for Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="javascripts/main.js"></script>
+    <script src="javascripts/favorite.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<$= process.env.GOOGLE_MAP_JS_KEY $>&q&callback=initMap" async defer></script>
   </body>
 </html>
