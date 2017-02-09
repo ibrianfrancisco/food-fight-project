@@ -1,8 +1,8 @@
 var Business = require('../models/business');
-var User = require('../models/user');
 
 module.exports = {
-  addBiz
+  addBiz,
+  deleteFav
 }
 
 function addBiz(req, res) {
@@ -14,7 +14,7 @@ function addBiz(req, res) {
         req.user.favorites.push(biz._id);
         req.user.save(function(err) {
           console.log(err);
-          // res.render()
+          res.json('added fav!');
         });
       }
     } else {
@@ -25,10 +25,19 @@ function addBiz(req, res) {
           req.user.favorites.push(biz._id);
           req.user.save(function(err) {
             console.log(err);
-            // res.render()
+            res.json('added fav!');
           });
         }
       });
     }
   });
 }
+
+function deleteFav(req, res) {
+  console.log('delete fav!');
+  req.user.favorites.splice(req.user.favorites.indexOf(req.params.id), 1);
+  req.user.save(function(err) {
+    res.json('deleted fav!');
+  });
+}
+

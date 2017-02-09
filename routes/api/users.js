@@ -5,7 +5,7 @@ var usersApiCtrl = require('../../controllers/api/users_ctrl');
 
 // GET /api/students
 // router.get('/students', studentsCtrl.index);
-router.post('/biz', isLoggedIn, businessCtrl.addBiz);
+// router.post('/biz', isLoggedIn, businessCtrl.addBiz);
 
 // DELETE /api/facts/:id
 // router.delete('/facts/:id', isLoggedIn, businessCtrl.delete);
