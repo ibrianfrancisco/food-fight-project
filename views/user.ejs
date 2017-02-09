@@ -14,28 +14,36 @@
     </div>
 
     <h1>User Profile</h1>
-
-    <h5>Favorites</h5>
+    <p><$= user.userName $></p>
     <div class="container">
+      <h5>Favorites</h5>
 
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="card">
-            <div class="card-image">
-              <img src="http://www.annholm.net/wp-content/uploads/2015/08/junk-food.jpg">
-              <!-- <span class="card-title">Card Title</span> -->
+        <$ if (user.favorites.length === 0) { $>
+          <p>None</p>
+        <$ } else { $>
+          <$ user.favorites.forEach(function(fav) { $>
+            <div class="row">
+              <div class="col s12 m4">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="<$= fav.image_url $>">
+                    <!-- <span class="card-title">Card Title</span> -->
+                  </div>
+                  <div class="card-content">
+                    <p><$= fav.name $></p>
+                    <p><$= fav.city $></p>
+                  </div>
+                  <div class="card-action">
+                    <a href="<$= fav.url $>">Yelp link</a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="card-content">
-              <p>Business Name</p>
-              <p>Business City</p>
-            </div>
-            <div class="card-action">
-              <a href="#">Yelp link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+          <$ }) $>
+        <$ } $>
+
+
+
     </div>
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
