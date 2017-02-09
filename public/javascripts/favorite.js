@@ -2,7 +2,6 @@
 $(document).ready(function(){
   $('#favorite').click(function(e) {
     e.preventDefault();
-    // $('#favorite').html('Added!');
     var biz = results.find( biz => biz.yelp_id === $('#favorite').attr('biz-id'));
     console.log(biz);
     $.ajax({

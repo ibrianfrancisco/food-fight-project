@@ -1,5 +1,4 @@
 var Business = require('../models/business');
-// var User = require('../models/user');
 
 module.exports = {
   addBiz,
@@ -41,7 +40,4 @@ function deleteFav(req, res) {
     res.json('deleted fav!');
   });
 }
-
-
-
 
