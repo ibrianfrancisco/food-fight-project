@@ -6,7 +6,7 @@ $(document).ready(function(){
     var biz = results.find( biz => biz.yelp_id === $('#favorite').attr('biz-id'));
     console.log(biz);
     $.ajax({
-      url: '/api/businesses',
+      url: '/api/biz',
       type: "POST", // or GET
       data: biz,
       success: function(data, textStatus, jqXHR) {
