@@ -19,31 +19,25 @@
             <div class="inner-form-wrap">
             <input id="show-input" type="text" placeholder="Italian, boba, babies.." value="<$= term $>" name="term">
             <input id="show-input" type="text" placeholder="Zip, address, etc." value="<$= location $>" class="show" name="location" required>
-            <span>Price</span>
-            <span>
-              <input name="group1" type="radio" id="test1" />
-              <label id="price-label" name="price" value="1,2" for="test1">Cheap</label>
-            </span>
-            <span>
-              <input name="group1" type="radio" id="test2" />
-              <label id="price-label" name="price" value="3,4" for="test2">Fancy</label>
-            </span>
             <div class="dist-sel">
-              <select>
-                <option value="">Distance</option>
-                <option value="1">5 Miles</option>
-                <option value="2">10 Miles</option>
-                <option value="3">15 Miles</option>
+              <select name="radius">
+                <option value="8000">Distance</option>
+                <option value="8000">5 Miles</option>
+                <option value="16000">10 Miles</option>
+                <option value="24140">15 Miles</option>
               </select>
             </div>
             <div class="rating-sel">
-              <select>
-                <option value="">Rating</option>
-                <option value="1">*</option>
-                <option value="2">**</option>
-                <option value="3">***</option>
-                <option value="3">****</option>
-                <option value="3">*****</option>
+              <select name="price">
+                <option value="1,2,3,4">Price</option>
+                <option value="1,2">Cheap</option>
+                <option value="3,4">Fancy</option>
+              </select>
+            </div>
+            <div class="rating-sel">
+              <select name="open">
+                <option value="false">All</option>
+                <option value="true">Open</option>
               </select>
             </div>
             <button id="show-search-submit" class="btn waves-effect waves-light" type="submit" name="action">Go
@@ -113,7 +107,6 @@
   <span></span>
 
 
-  <div id="map"></div>
 
 
 
@@ -317,6 +310,7 @@
       $(document).ready(function(){
           $('.materialboxed').materialbox();
         });
+
     </script>
     <!-- also find a way to continously going without having a limit, so far limit might be 20? not sure -->
 
