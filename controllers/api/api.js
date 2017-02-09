@@ -49,6 +49,7 @@ function deleteUser(req, res, next) {
 }
 
 function getAllBusinesses(req, res, next) {
+  console.log('hi');
   Business.find({}, function(err, businesses) {
     console.log('hi');
     res.status(200).json(businesses);
