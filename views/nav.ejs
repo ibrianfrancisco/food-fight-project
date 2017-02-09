@@ -4,26 +4,19 @@
       <div class="brand-logo"><a href="/" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
       <div class="brand-name">Food Fight!</div>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <!-- <li><a href="">Home</a></li>
-        <li><a href="">About</a></li> -->
           <$ if (user) { $>
-          <!-- <li>Welcome, <$= user.userName $></li> -->
-        <!-- Dropdown Trigger -->
           <li><a class='dropdown-button' href='#' data-activates='dropdown1'><img src="<$= user.profileImage $>"></a></li>
-        <!-- Dropdown Structure -->
         <ul id='dropdown1' class='dropdown-content'>
           <li><a href="/">Search</a></li>
           <li class="divider"></li>
           <li><a href="/users/<$= user.id $>">Favorites</a></li>
           <li class="divider"></li>
-          <li><a href="#about">About</a></li>
           <li class="divider"></li>
             <li><a href="/logout">Logout</a></li>
           <$ } else { $>
             <li><a href="/auth/google"><div class="sign-in">Sign In</div><img class="login" src="../images/google-icon.png"></a></li>
           <$ } $>
         </ul>
-
       </ul>
     </div>
   </nav>

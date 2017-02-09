@@ -1,23 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-.login {
-  width: 50px;
-  padding-top: 10px;
-}
-
-.sign-in {
-  display: inline-block;
-  color: black;
-  vertical-align: top;
-  padding-right: 5px;
-}
-
-.logo {
-  width: 100px;
-  padding-left: 20px;
-}
-
 nav {
   padding-top: 5px;
   background-color: transparent;
@@ -39,6 +22,23 @@ nav ul a {
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   padding-right: 20px;
+}
+
+.logo {
+  width: 100px;
+  padding-left: 20px;
+}
+
+.login {
+  width: 50px;
+  padding-top: 5px;
+}
+
+.sign-in {
+  display: inline-block;
+  color: black;
+  vertical-align: top;
+  padding-right: 5px;
 }
 
 a.dropdown-button img {
