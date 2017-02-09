@@ -1,16 +1,20 @@
 var request = require('request');
 var yelp = require('../../config/yelp');
+
 module.exports = {
   search: search
 }
-function search(req, res) {
 
+function search(req, res) {
   var term = req.body.term;
-  yelp.search({ term: term, location: req.body.location, limit: 50 })
+  var location = req.body.location;
+  var radius = req.body.radius;
+  var price = req.body.price;
+  var open = req.body.open;
+  yelp.search({ term: term, location: location, radius: radius, price: price, categories: 'food,bars,restaurants', open_now: open, limit: 50 })
   .then(function (data) {
     var jsonBussObj = JSON.parse(data); // Parse JSON string to JSON Object
-    console.log(jsonBussObj);
-    res.render('show', {jsonBussObj, user: req.user, term: req.body.term, location: req.body.location });
+    res.render('show', {jsonBussObj, user: req.user, term, location });
   })
   .catch(function (err) {
     console.error('error', err);
