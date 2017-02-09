@@ -1,7 +1,7 @@
 /*show start*/
 .show-img {
-  height: 450px;
-  width: 450px;
+  height: 400px;
+  width: 400px;
   margin: 0 auto;
   border: 2px solid black;
 }
@@ -60,16 +60,18 @@
 #business-image {
   position: relative;
   /*float: left;*/
-  width:  450px;
-  height: 450px;
+  width:  600px;
+  height: 600px;
   background-position: 50% 50%;
   background-repeat:   no-repeat;
   background-size:     cover;
+  margin: 10px auto;
 }
 
 .image-container {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .search-nav {
@@ -94,8 +96,8 @@
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
 #map {
-  height: 450px;
-  width: 450px;
+  height: 400px;
+  width: 400px;
   margin: 0 auto;
   border: 2px solid black;
 }
@@ -104,6 +106,63 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-image: url(/assets/images/show-bg.png);
+/*  background-image: url(/assets/images/show-bg.png);*/
   background-size: cover;
+}
+/* Testing css*/
+#card-wrap {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#info-wrap {
+  width: 100%;
+  margin: 0 auto;
+  height: 730px;
+}
+
+button {
+  height: 50px;
+  width: 50px;
+  border-radius: 6px;
+  border: white;
+  padding: 0;
+  background-color: black;
+}
+
+/*i.material-icons {
+  color: white;
+}*/
+
+nav {
+  padding-top: 5px;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+nav .brand-name {
+  color: black;
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
+  text-shadow: 2px 2px 4px white;
+  display: inline-block;
+  padding-left: 110px;
+  padding-top: 5px;
+}
+
+nav ul a {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+.logo {
+  width: 100px;
+  padding-left: 20px;
+}
+
+nav .input-field input[type=text]:valid {
+  border: 1px solid #bdbdbd;
+  border-radius: 6px;
 }
