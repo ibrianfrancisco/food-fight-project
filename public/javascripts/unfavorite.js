@@ -1,8 +1,8 @@
 // jQuery
 $(document).ready(function(){
-  $('#cards').on('click', 'div.col.s12.m4', function(evt) {
-    var bizId = $(this).find('a').attr('biz-id');
-    $(this).remove();
+  $('#cards').on('click', 'div.col.s12.m4 a', function(evt) {
+    var bizId = $(this).attr('biz-id');
+    $(this).closest('div.col.s12.m4').remove();
     $.ajax({
       url: '/api/businesses/delete/' + bizId,
       type: "DELETE",
