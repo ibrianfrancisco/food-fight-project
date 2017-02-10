@@ -54,3 +54,13 @@ a.dropdown-button img {
   border-radius: 50%;
   padding-top: 5px;
 }
+
+#delete-user {
+  border: none;
+  background-color: white !important;
+  color: #26a69a;
+  font-size: 16px !important;
+  padding: 14px 0px !important;
+  font-weight: bold;
+  margin-left: -18px;
+}

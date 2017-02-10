@@ -1,7 +1,7 @@
 // jQuery
 $(document).ready(function(){
   $('#favorite').click(function(e) {
-    $(this).html('<i class="material-icons">favorite</i>');
+    $(this).html('<i class="left valign material-icons">favorite</i>');
     e.preventDefault();
     var biz = results.find( biz => biz.yelp_id === $('#favorite').attr('biz-id'));
     console.log(biz);

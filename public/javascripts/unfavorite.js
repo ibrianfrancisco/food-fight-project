@@ -1,7 +1,7 @@
 $(document).ready(function(){
-  $('#cards').on('click', 'div.col.s12.m4 a', function(evt) {
+  $('#cards').on('click', 'div.card a', function(evt) {
     var bizId = $(this).attr('biz-id');
-    $(this).closest('div.col.s12.m4').remove();
+    $(this).closest('div.card').remove();
     $.ajax({
       url: '/api/businesses/delete/' + bizId,
       type: "DELETE",
