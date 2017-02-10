@@ -9,19 +9,15 @@
     <div class="jumbotron">
       <div  class="center-align" ><img src="<$= user.profileImage $>"></div>
       <h4 class="center-align"><$= user.userName $></h4>
-      <h5>My Profile</h5>
-      <form class="center" action="/users/<$= user.id $>?_method=DELETE" method="POST" onsubmit="return confirm(`You're about to delete your account, are you sure?`)">
-        <input class="btn" id="delete-user" type="submit" value="delete">
-      </form>
+      <h5>My Favorites</h5>
     </div>
-    <h5 class="center">My Favorites</h5>
     <div class="container">
       <div class="row" id="cards">
         <$ if (user.favorites.length === 0) { $>
           <p>None, that's sad.</p>
         <$ } else { $>
           <$ user.favorites.forEach(function(fav) { $>
-              <div class="col s12 m4">
+              <!-- <div class="col s12 m4"> -->
                 <div class="card">
                   <div class="card-image">
                     <img src="<$= fav.image_url $>">
@@ -37,7 +33,7 @@
                     <a href="<$= fav.url $>" target="_blank">Yelp link</a>
                   </div>
                 </div>
-              </div>
+              <!-- </div> -->
           <$ }) $>
         <$ } $>
       </div>

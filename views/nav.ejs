@@ -12,6 +12,10 @@
           <li><a href="/users">Favorites</a></li>
           <li class="divider"></li>
           <li><a href="/logout">Logout</a></li>
+          <li class="divider"></li>
+          <form class="center" action="/users/<$= user.id $>?_method=DELETE" method="POST" onsubmit="return confirm(`You're about to delete your account, are you sure?`)">
+            <input id="delete-user" type="submit" value="Delete">
+          </form>
           <$ } else { $>
             <li><a id="profile-logo" href="/auth/google"><div class="sign-in">Sign In</div><img class="login" src="../images/google-icon.png"></a></li>
           <$ } $>
