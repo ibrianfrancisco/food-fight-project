@@ -20,6 +20,7 @@
 1. The Website can be reached  [Here](https://food-fight-app.herokuapp.com/)
 2. Trello can be reached [Here](https://trello.com/b/XOelc49O/project-3/)
 3. Github can be reached [Here](https://github.com/ibrianfrancisco/dont-panic-project)
+4. Pitch deck can be reached [Here](https://docs.google.com/presentation/d/1imDNFpdFEiFSb5-7oxrZsXdYvPf8OVyoPizn9BkbRDk/edit#slide=id.g1c538197b1_0_0)
 4. Input what type of food you are looking and a location.
 5. See what fate gives you!
 6. Sign in with google to favorite places.
