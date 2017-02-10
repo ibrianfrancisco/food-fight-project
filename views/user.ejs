@@ -15,6 +15,7 @@
       <div class="row" id="cards">
         <$ if (user.favorites.length === 0) { $>
           <p>None</p>
+          <br>
         <$ } else { $>
           <$ user.favorites.forEach(function(fav) { $>
               <div class="col s12 m4">
