@@ -50,7 +50,7 @@
             <ul id='dropdown1' class='dropdown-content'>
               <li><a href="/">Search</a></li>
               <li class="divider"></li>
-              <li><a href="/users/<$= user.id $>">Favorites</a></li>
+              <li><a href="/users">Favorites</a></li>
               <li class="divider"></li>
               <li class="divider"></li>
                 <li><a href="/logout">Logout</a></li>
@@ -96,7 +96,7 @@
           </div>
         </div>
     </div>
-
+  </div>
   <$ if (user) { $>
      <span id='fav'><a id='favorite'><i class="material-icons">favorite_outline</i></a></span>
    <$ } else { $>
@@ -175,7 +175,6 @@
         $('#business-name').html(shuffled[next].name);
         $('#biz-name').html(shuffled[next].name);
         $('#modal-biz-name').html(shuffled[next].name);
-        $('#phone-number').html("Phone number: " + shuffled[next].phone);
         $('#biz-price').html(shuffled[next].price)
         reviewImage(next);
         $('#favorite').attr('biz-id', shuffled[next].yelp_id);
