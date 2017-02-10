@@ -16,7 +16,6 @@ require('./config/passport');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var apiBusinesses = require('./routes/api/businesses');
-var apiUsers = require('./routes/api/users');
 
 var app = express();
 
@@ -45,7 +44,6 @@ app.use(methodOverride('_method'))
 app.use('/', index);
 app.use('/users', users);
 app.use('/api/businesses', apiBusinesses);
-app.use('/api/users', apiUsers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

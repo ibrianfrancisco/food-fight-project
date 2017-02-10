@@ -32,8 +32,6 @@
 * If any business does not provide longitude and latitude, a syntax error occurs
 
 ### RESTful API Documentation
-* GET api/users
-* GET api/users/:id
 * GET api/businesses
 * GET api/businesses/:id
 
