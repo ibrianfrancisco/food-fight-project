@@ -10,8 +10,6 @@ function isLoggedIn(req, res, next) {
   res.redirect('/auth/google');
 }
 
-
-
 //API ROUTES
 router.get('/', businessApiCtrl.getAllBusinesses);
 router.get('/:id', businessApiCtrl.getOneBusiness);

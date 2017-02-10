@@ -22,7 +22,6 @@ main {
 }
 
 .container {
-  /*column-count: 4;*/
   column-gap: 0;
   margin: auto;
   padding-left: 20px;

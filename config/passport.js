@@ -1,4 +1,3 @@
-// CARLIE START
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var User = require('../models/user');
@@ -39,5 +38,3 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-
-// CARLIE END

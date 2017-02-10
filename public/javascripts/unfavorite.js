@@ -1,4 +1,3 @@
-// jQuery
 $(document).ready(function(){
   $('#cards').on('click', 'div.col.s12.m4 a', function(evt) {
     var bizId = $(this).attr('biz-id');
