@@ -3,81 +3,26 @@
   </head>
   <body>
   <!-- NAVBAR -->
-  <div class="">
-    <div class="navbar-fixed">
-      <nav id="main-nav">
-        <div class="">
-          <div class="brand-logo"><a href="/" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
-          <div class="brand-name">Food Fight!</div>
-          <div class="form">
-            <form class="show-search" action="/search" method="POST">
-
-              <div class="input-field term">
-                  <input id="show-input" type="text" placeholder="Italian, boba, babies.." value="<$= term $>" name="term">
-              </div>
-
-              <div class="input-field">
-                  <input id="show-input" type="text" placeholder="Zip, address, etc." value="<$= location $>" class="show" name="location" required>
-              </div>
-
-              <div class="dist-sel btn">
-                <select name="radius">
-                  <option value="8000">Distance</option>
-                  <option value="8000">5 Miles</option>
-                  <option value="16000">10 Miles</option>
-                  <option value="24140">15 Miles</option>
-                </select>
-              </div>
-
-              <div class="rating-sel btn">
-                <select name="price">
-                  <option value="1,2,3,4">Price</option>
-                  <option value="1,2">Cheap</option>
-                  <option value="3,4">Fancy</option>
-                </select>
-              </div>
-
-              <div class="input-field">
-                <button type="submit"><i class="material-icons search">search</i></button>
-              </div>
-
-            </form>
-          </div>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <$ if (user) { $>
-            <li><a class='dropdown-button' href='#' data-activates='dropdown1'><img src="<$= user.profileImage $>"></a></li>
-            <ul id='dropdown1' class='dropdown-content'>
-              <li><a href="/">Search</a></li>
-              <li class="divider"></li>
-              <li><a href="/users">Favorites</a></li>
-              <li class="divider"></li>
-              <li class="divider"></li>
-                <li><a href="/logout">Logout</a></li>
-            <$ } else { $>
-              <li><a href="/auth/google"><div class="sign-in">Sign In</div><img class="login" src="../images/google-icon.png"></a></li>
-            <$ } $>
-            </ul>
-          </ul>
-        </div>
-      </nav>
-    </div>
+  <$ include show-nav $>
   <br>
-  </div>
-  <p class="alert"></p>
-  <!-- Testing -->
+  <br>
   <div class="row">
     <div class="col s6">
       <div id="info-wrap">
         <div class="detail-wrap">
-          <h3 class="business-name" id="biz-name"></h3><br>
-          <h5 class="business-info info-padding" id="biz-price"></h5><br>
+          <div id="b-name"><h4 class="business-name" id="biz-name"></h4></div>
           <img id="image" class="info-padding">
+          <h5 class="business-info info-padding" id="biz-price"></h5>
           <h5 id="phone-number" class="info-padding"></h5>
-          <a target="_blank" id="url" class="info-padding">Yelp Page</a>
+          <br>
+          <a target="_blank" id="url" class="info-padding"><img id="yelp_link" src="images/yelp_link_2.png"></a>
+          <br>
+          <br>
+          <br>
+          <button id="next-button" class="btn waves-effect waves-light btn-large mid-btn" onclick="nextBusiness(); resetFav();" type="submit" name="action">Next!
+            <i class="material-icons right">forward</i>
+          </button>
         </div>
-        <button id="next-button" class="btn waves-effect waves-light btn-large mid-btn" onclick="nextBusiness(); resetFav();" type="submit" name="action">Next!
-          <i class="material-icons right">forward</i>
-        </button>
       </div>
     </div>
     <div class="col s6">
@@ -91,12 +36,13 @@
             <span id='fav'><a id='favorite'><i class="material-icons">favorite_outline</i></a></span>
          <$ } else { $>
            <span>Login to save!</span>
-         <$ } $><i class="material-icons right">room</i></span>
+         <$ } $>
+        <i class="material-icons right">room</i></span>
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
           <div id="map">
-          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -136,10 +82,18 @@
       var a = document.getElementById('url');
 
       //----- Writing Elements in through JQuery ------//
-      $('#business-image').css({'background-image': 'url(' + shuffled[0].image_url + ')'});
+      if (shuffled[0].image_url === '') {
+        $('#business-image').css({"background-image": "url(/images/no-image.png)"});
+      } else {
+        $('#business-image').css({'background-image': 'url(' + shuffled[0].image_url + ')'});
+      }
       $('#biz-name').html(shuffled[0].name);
       $('#modal-biz-name').html(shuffled[0].name);
-      $('#phone-number').html(shuffled[0].phone);
+      if (shuffled[0].phone === '') {
+        $('#phone-number').html('<p>No Number Listed</p>');
+      } else {
+        $('#phone-number').html(shuffled[0].phone);
+      }
       $('#biz-price').html(shuffled[0].price);
       reviewImage(0);
       $('#favorite').attr('biz-id', shuffled[0].yelp_id);
@@ -174,6 +128,11 @@
         $('#business-name').html(shuffled[next].name);
         $('#biz-name').html(shuffled[next].name);
         $('#modal-biz-name').html(shuffled[next].name);
+        if (shuffled[next].phone === '') {
+          $('#phone-number').html('No Number Listed');
+        } else {
+          $('#phone-number').html(shuffled[next].phone);
+        }
         $('#biz-price').html(shuffled[next].price)
         reviewImage(next);
         $('#favorite').attr('biz-id', shuffled[next].yelp_id);

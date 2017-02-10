@@ -10,6 +10,11 @@ main {
   flex: 1 0 auto;
 }
 
+.show-nav {
+  padding-bottom: 75px !important;
+  border-bottom: 1px solid black;
+}
+
 .show-img {
   height: 400px;
   width: 400px;
@@ -17,10 +22,21 @@ main {
   border: 2px solid black;
 }
 
+#yelp_link {
+  height: 80px;
+}
+
+#b-name {
+  width: 400px;
+  height: 100px;
+  margin: auto;
+}
+
 #show-input {
   width: 200px;
   padding-left: 10px;
   background-color: white;
+  border: 2px solid black;
   color: black;
 }
 
@@ -37,6 +53,7 @@ main {
   margin: 10px;
   width: 200px;
 }
+
 #next-btn-col {
   position: relative;
 }
@@ -47,7 +64,7 @@ main {
   margin: 0 auto;
 }
 
-.dist-sel {
+/*.dist-sel {
   width: 100px;
   display: inline-block;
   margin-left: 10px;
@@ -61,7 +78,7 @@ main {
   margin-left: 10px;
   background-color: black;
   border-radius: 6px;
-}
+}*/
 
 #price-label {
   padding-left: 24px;
@@ -125,7 +142,7 @@ html, body {
 }
 /* Testing css*/
 #card-wrap {
-  width: 100%;
+  width: 500px;
   margin: 0 auto;
 }
 
@@ -144,13 +161,9 @@ button {
   background-color: black;
 }
 
-/*i.material-icons {
-  color: white;
-}*/
-
 nav {
   padding: 0;
-  background-color: gray;
+  background-color: white;
   box-shadow: none;
 }
 
@@ -162,6 +175,7 @@ nav .brand-name {
   display: inline-block;
   padding-left: 110px;
   padding-top: 5px;
+  padding-right: 90px;
 }
 
 nav ul a {
@@ -169,25 +183,29 @@ nav ul a {
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   padding-right: 20px;
+  height: 50px;
+}
+
+nav ul li a#profile-logo {
+  height: 0;
 }
 
 .logo {
-  width: 100px;
+  width: 90px;
   padding-left: 20px;
 }
 
-/*nav .input-field input[type=text]:valid {
-  border: 1px solid #bdbdbd;
-  border-radius: 6px;
-}*/
+.nav-show {
+  border-bottom: 2px solid black;
+}
 
 .detail-wrap {
   text-align: center;
-  padding-top: 30%;
+  padding-top: 17%;
 }
 
 #next-button {
-  position: absolute;
+/*  position: absolute;*/
   bottom: 5%;
   /*right: 30%;*/
   background-color: black;
@@ -232,5 +250,34 @@ i.material-icons.search {
 
 .btn {
   vertical-align: inherit;
+}
+
+.dist-sel {
+  width: 100px;
+  display: inline-block;
+  margin-left: 30px;
+  color: black;
+}
+
+.rating-sel {
+  width: 100px;
+  display: inline-block;
+  margin-left: 30px;
+  color: black;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
