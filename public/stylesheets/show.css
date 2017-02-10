@@ -75,8 +75,8 @@ main {
 #business-image {
   position: relative;
   /*float: left;*/
-  width:  600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   background-position: 50% 50%;
   background-repeat:   no-repeat;
   background-size:     cover;
@@ -103,11 +103,15 @@ main {
   width: 141px;
 }
 
+#yelp_img {
+  height: 70px;
+}
+
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
 #map {
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   margin: 0 auto;
   border: 2px solid black;
 }
