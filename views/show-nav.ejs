@@ -1,0 +1,59 @@
+<div>
+    <div class="navbar-fixed">
+      <nav id="main-nav" class="show-nav">
+        <div>
+          <div class="brand-logo"><a href="/" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
+          <div class="brand-name">Food Fight!</div>
+          <div class="form">
+            <form class="show-search" action="/search" method="POST">
+
+              <div class="input-field term">
+                  <input id="show-input" type="text" placeholder="Italian, boba, babies.." value="<$= term $>" name="term">
+              </div>
+
+              <div class="input-field">
+                  <input id="show-input" type="text" placeholder="Zip, address, etc." value="<$= location $>" class="show" name="location" required>
+              </div>
+
+              <div class="dist-sel">
+                <select name="radius">
+                  <option value="8000">Distance</option>
+                  <option value="1600">1 Mile</option>
+                  <option value="8000">5 Miles</option>
+                  <option value="16000">10 Miles</option>
+                  <option value="40000">25 Miles</option>
+                </select>
+              </div>
+
+              <div class="rating-sel">
+                <select name="price">
+                  <option value="1,2,3,4">Price</option>
+                  <option value="1,2">Cheap</option>
+                  <option value="3,4">Fancy</option>
+                </select>
+              </div>
+
+              <div class="input-field">
+                <button type="submit"><i class="material-icons search">search</i></button>
+              </div>
+
+            </form>
+          </div>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <$ if (user) { $>
+            <li><a id="profile-logo" class='dropdown-button' href='#' data-activates='dropdown1'><img src="<$= user.profileImage $>"></a></li>
+            <ul id='dropdown1' class='dropdown-content'>
+              <li><a href="/">Search</a></li>
+              <li class="divider"></li>
+              <li><a href="/users">Favorites</a></li>
+              <li class="divider"></li>
+              <li><a href="/logout">Logout</a></li>
+            <$ } else { $>
+              <li><a href="/auth/google"><div class="sign-in">Sign In</div><img class="login" src="../images/google-icon.png"></a></li>
+            <$ } $>
+            </ul>
+          </ul>
+        </div>
+      </nav>
+    </div>
+</div>
