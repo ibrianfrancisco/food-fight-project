@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link rel='stylesheet' href='/stylesheets/nav.css'/>
-    <link rel='stylesheet' href='/stylesheets/show.css'/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<$ include head $>
+  <link rel='stylesheet' href='/stylesheets/show.css'/>
   </head>
   <body>
   <!-- NAVBAR -->
@@ -17,6 +10,40 @@
         <div class="">
           <div class="brand-logo"><a href="/" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
           <div class="brand-name">Food Fight!</div>
+          <div class="form">
+            <form class="show-search" action="/search" method="POST">
+
+              <div class="input-field term">
+                  <input id="show-input" type="text" placeholder="Italian, boba, babies.." value="<$= term $>" name="term">
+              </div>
+
+              <div class="input-field">
+                  <input id="show-input" type="text" placeholder="Zip, address, etc." value="<$= location $>" class="show" name="location" required>
+              </div>
+
+              <div class="dist-sel btn">
+                <select name="radius">
+                  <option value="8000">Distance</option>
+                  <option value="8000">5 Miles</option>
+                  <option value="16000">10 Miles</option>
+                  <option value="24140">15 Miles</option>
+                </select>
+              </div>
+
+              <div class="rating-sel btn">
+                <select name="price">
+                  <option value="1,2,3,4">Price</option>
+                  <option value="1,2">Cheap</option>
+                  <option value="3,4">Fancy</option>
+                </select>
+              </div>
+
+              <div class="input-field">
+                <button type="submit"><i class="material-icons search">search</i></button>
+              </div>
+
+            </form>
+          </div>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
               <$ if (user) { $>
               <li><a class='dropdown-button' href='#' data-activates='dropdown1'><img src="<$= user.profileImage $>"></a></li>
@@ -35,122 +62,46 @@
         </div>
       </nav>
     </div>
-
-    <div class="">
-      <nav class="search-nav">
-        <div class="input-field">
-          <form class="show-search" action="/search" method="POST">
-            <div class="inner-form-wrap">
-            <input id="show-input" type="text" placeholder="Italian, boba, babies.." value="<$= term $>" name="term">
-            <input id="show-input" type="text" placeholder="Zip, address, etc." value="<$= location $>" class="show" name="location" required>
-            <div class="dist-sel">
-              <select name="radius">
-                <option value="8000">Distance</option>
-                <option value="8000">5 Miles</option>
-                <option value="16000">10 Miles</option>
-                <option value="24140">15 Miles</option>
-              </select>
-            </div>
-            <div class="rating-sel">
-              <select name="price">
-                <option value="1,2,3,4">Price</option>
-                <option value="1,2">Cheap</option>
-                <option value="3,4">Fancy</option>
-              </select>
-            </div>
-            <button id="show-search-submit" class="btn waves-effect waves-light" type="submit" name="action">Go
-            </button>
-            </div>
-          </form>
-        </div>
-      </nav>
-    </div>
+  <br>
   </div>
+  <p class="alert"></p>
   <!-- Testing -->
   <div class="row">
-    <div class="col s6">
-      <div id="card-wrap" class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class=""  id="business-image">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-          <p><a href="#">This is a link</a></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-          <div id="map">
+      <div class="col s6">
+        <div id="info-wrap">
+          <div class="detail-wrap">
+            <h3 class="business-name" id="biz-name"></h3><br>
+            <h5 class="business-info info-padding" id="biz-price"></h5><br>
+            <img id="image" class="info-padding">
+            <h5 id="phone-number" class="info-padding"></h5>
+            <a target="_blank" id="url" class="info-padding">Website</a>
           </div>
+          <button id="next-button" class="btn waves-effect waves-light btn-large mid-btn" onclick="nextBusiness(); resetFav();" type="submit" name="action">Next!
+            <i class="material-icons right">send</i>
+          </button>
         </div>
       </div>
-    </div>
-    <div class="col s6">
-      <div id="info-wrap">
-        <h4 class="buisness-name" id="biz-name"></h4><br>
-        <h4 class="buisness-info" id="biz-price"></h4><br><h4 class="buisness-info"></h4><img id="image">
-        <p id="phone-number"></p>
-        <a target="_blank" id="url">Website</a>
-      </div>
-    </div>
-  </div>
-  <!-- Testing -->
-
-  <!-- BUSINESS INFO -->
-<!--   <div class="show-wrapper center-align">
-    <div class="row center-align">
-      <div id="about-pane" class="col s6">
-        <h4 class="buisness-name" id="biz-name"></h4><h4 class="buisness-info">&nbsp|</h4>
-        <h4 class="buisness-info" id="biz-price"></h4>&nbsp&nbsp<h4 class="buisness-info">|</h4>&nbsp&nbsp<img id="image"><br>
-        <div class="image-container">
-          <img class="materialboxed show-img"  id="business-image">
-        </div> -->
-        <!-- Modal content -->
-        <!-- <div id="modal1" class="modal">
-          <div class="modal-content">
-            <h4 id="modal-biz-name"></h4>
-            <a target="_blank" id="url">Website</a>
-            <p id="phone-number"></p>
-            <ul>
-              <li>Hours:</li>
-              <li>mon: 12-5</li>
-              <li>tue: 12-5</li>
-              <li>wed: 12-5</li>
-              <li>thu: 12-5</li>
-              <li>fri: 12-5</li>
-            </ul>
+      <div class="col s6">
+        <div id="card-wrap" class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img id="business-image">
           </div>
-          <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Map<i class="material-icons right">room</i></span>
           </div>
-        </div> -->
-        <!-- Modal content end -->
-      <!-- </div> -->
-
-      <!-- MAP INFO -->
-      <!-- <h4 class="biz-map-name">Location</h4>
-      <div class="col s6"> -->
-        <!-- <div id="map">
-        </div> -->
-      <!-- </div> -->
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+            <div id="map">
+            </div>
+          </div>
+        </div>
     </div>
-    <div id="next-btn-col" class="col s12">
-      <div class="next-btn-wrap">
-        <a class="waves-effect waves-light btn-large modal-trigger mid-btn" href="#modal1">Show Info</a>
-        <button class="btn waves-effect waves-light btn-large mid-btn" onclick="nextBusiness();" type="submit" name="action">Next!
-          <i class="material-icons right">send</i>
-        </button>
-      </div>
-    </div>
-  </div>
 
   <$ if (user) { $>
-    <span id='fav'><button id="favorite" >Add to Favorites</button></span>
-    <span><a href="/users/<$= user.id $>"><$= user.userName $></a></span>
-  <$ } else { $>
-    <span>Login to save!</span>
-  <$ } $>
-
-  <span></span>
+     <span id='fav'><a id='favorite'><i class="material-icons">favorite_outline</i></a></span>
+   <$ } else { $>
+     <span>Login to save!</span>
+   <$ } $>
 
     <script type="text/javascript">
     //----- VARIABLES -----//
@@ -159,7 +110,7 @@
         <$ jsonBussObj.businesses.forEach(function(business) { $>
           {
             yelp_id: '<$= business.id $>',
-            name: '<$= business.name $>',
+            name: "<$- business.name $>",
             url: '<$= business.url $>',
             phone: '<$= business.phone $>',
             image_url: '<$= business.image_url $>',
@@ -194,9 +145,13 @@
       reviewImage(0);
       $('#favorite').attr('biz-id', shuffled[0].yelp_id);
       a.href = shuffled[0].url;
-
+      // if (req.user.favorites.findIndex())
 
       //----- FUNCTIONS -----//
+      function resetFav() {
+        $('#favorite').html('<i class="material-icons">favorite_outline</i>');
+      }
+
       function shuffle(array) {
         var m = array.length, t, i;
         // While there remain elements to shuffle…
@@ -321,17 +276,6 @@
       });
 
     </script>
-    <!-- also find a way to continously going without having a limit, so far limit might be 20? not sure -->
-
-    <!-- jQuery (required by Materialize) -->
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <!-- Using Underscore for collection manipulation and client-side templatin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <!-- JavaScript for Materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-    <script src="javascripts/main.js"></script>
     <script src="javascripts/favorite.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<$= process.env.GOOGLE_MAP_JS_KEY $>&q&callback=initMap" async defer></script>
-  </body>
-</html>
+<$ include footer $>

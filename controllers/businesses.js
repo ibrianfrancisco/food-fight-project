@@ -16,6 +16,8 @@ function addBiz(req, res) {
           console.log(err);
           res.json('added fav!');
         });
+      } else {
+        console.log('already in favorites!')
       }
     } else {
       console.log('biz does not exist, adding');
@@ -27,6 +29,8 @@ function addBiz(req, res) {
             console.log(err);
             res.json('added fav!');
           });
+        } else {
+          console.log('already in favorites!')
         }
       });
     }

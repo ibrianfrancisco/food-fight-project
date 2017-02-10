@@ -34,11 +34,10 @@ require('ejs').delimiter = '$';
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-// CARLIE START
 app.use(session({
   secret: 'WDIRocks!',
   resave: false,
@@ -46,7 +45,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-// CARIE END
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(methodOverride('_method'))

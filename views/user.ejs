@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link rel='stylesheet' href='/stylesheets/nav.css'/>
+<$ include head $>
     <link rel='stylesheet' href='/stylesheets/user.css'/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   </head>
   <body>
     <div id="main-wrapper">
@@ -14,7 +7,6 @@
     </div>
     <br><br>
     <div class="jumbotron">
-      <!-- <hr> -->
       <div  class="center-align" ><img src="<$= user.profileImage $>"></div>
       <h4 class="center-align"><$= user.userName $></h4>
     </div>
@@ -30,33 +22,25 @@
                 <div class="card">
                   <div class="card-image">
                     <img src="<$= fav.image_url $>">
-                    <span class="card-title"><$= fav.name $></span>
                     <a biz-id="<$= fav.id $>" class="unfavorite btn-floating halfway-fab waves-effect waves-light red" ><i class="material-icons">clear</i></a>
                   </div>
                   <div class="card-content">
+                    <h5><b><$- fav.name $></b></h5>
                     <p><$= fav.address1 $>,<br><$= fav.city $>, <$= fav.state $> <$= fav.zip_code $></p>
                     <p>Rating: <$= fav.rating $> stars</p>
                     <p><$= fav.price $></p>
                   </div>
                   <div class="card-action hoverable">
-                    <a href="<$= fav.url $>">Yelp link</a>
+                    <a href="<$= fav.url $>" target="_blank">Yelp link</a>
                   </div>
                 </div>
               </div>
           <$ }) $>
         <$ } $>
-        </div>
-
-
-
+      </div>
     </div>
     <form action="/users/<$= user.id $>?_method=DELETE" method="POST" onsubmit="return confirm(`You're about to delete your account, are you sure?`)">
       <input id="delete-user" type="submit" value="delete">
     </form>
-      <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-      <script src="https://apis.google.com/js/platform.js" async defer></script>
-      <script src="/javascripts/unfavorite.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-  </body>
-</html>
+    <script src="/javascripts/unfavorite.js"></script>
+<$ include footer $>
