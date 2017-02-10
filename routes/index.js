@@ -4,7 +4,6 @@ var yelpCtrl = require('../controllers/api/yelp');
 var passport = require('passport');
 var yelp = require('../config/yelp');
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { user: req.user });
 });

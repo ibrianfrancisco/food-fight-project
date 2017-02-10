@@ -33,23 +33,22 @@
           <span class="card-title activator grey-text text-darken-4">
           <$ if (user) { $>
             <span id='fav'><a id='favorite'><i class="material-icons">favorite_outline</i></a></span>
-         <$ } else { $>
-           <span>Login to save!</span>
-         <$ } $>
-        <i class="material-icons right">room</i></span>
+          <$ } else { $>
+            <span>Login to save!</span>
+          <$ } $>
+            <i class="material-icons right">room</i>
+          </span>
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-          <div id="map">
-        </div>
+          <div id="map"></div>
         </div>
       </div>
     </div>
   </div>
 
   <script type="text/javascript">
-    //----- VARIABLES -----//
-
+  //----- VARIABLES -----//
       var results = [
         <$ jsonBussObj.businesses.forEach(function(business) { $>
           {
@@ -80,7 +79,7 @@
       var next = 0;
       var a = document.getElementById('url');
 
-      //----- Writing Elements in through JQuery ------//
+      //----- Setting Elements in through JQuery ------//
       if (shuffled[0].image_url === '') {
         $('#business-image').css({"background-image": "url(/images/no-image.png)"});
       } else {
@@ -97,7 +96,6 @@
       reviewImage(0);
       $('#favorite').attr('biz-id', shuffled[0].yelp_id);
       a.href = shuffled[0].url;
-      // if (req.user.favorites.findIndex())
 
       //----- FUNCTIONS -----//
       function resetFav() {
@@ -106,9 +104,9 @@
 
       function shuffle(array) {
         var m = array.length, t, i;
-        // While there remain elements to shuffle…
+        // While there remain elements to shuffle
         while (m) {
-          // Pick a remaining element…
+          // Pick a remaining element
           i = Math.floor(Math.random() * m--);
           // And swap it with the current element.
           t = array[m];
@@ -123,7 +121,6 @@
         var zip_code = shuffled[next]["zip_code"];
         var name = shuffled[next].name.split(' ').join('+');
         var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
-
         $('#business-name').html(shuffled[next].name);
         $('#biz-name').html(shuffled[next].name);
         $('#modal-biz-name').html(shuffled[next].name);

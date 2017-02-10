@@ -58,27 +58,10 @@ main {
 }
 
 .show-search {
-  /*background-color: rgba(0,0,0,.5);*/
   width: 1000px;
   padding-bottom: 20px;
   margin: 0 auto;
 }
-
-/*.dist-sel {
-  width: 100px;
-  display: inline-block;
-  margin-left: 10px;
-  background-color: black;
-  border-radius: 6px;
-}
-
-.rating-sel {
-  width: 100px;
-  display: inline-block;
-  margin-left: 10px;
-  background-color: black;
-  border-radius: 6px;
-}*/
 
 #price-label {
   padding-left: 24px;
@@ -91,7 +74,6 @@ main {
 
 #business-image {
   position: relative;
-  /*float: left;*/
   width: 500px;
   height: 500px;
   background-position: 50% 50%;
@@ -137,10 +119,9 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-/*  background-image: url(/assets/images/show-bg.png);*/
   background-size: cover;
 }
-/* Testing css*/
+
 #card-wrap {
   width: 500px;
   margin: 0 auto;
@@ -205,9 +186,7 @@ nav ul li a#profile-logo {
 }
 
 #next-button {
-/*  position: absolute;*/
   bottom: 5%;
-  /*right: 30%;*/
   background-color: black;
   border-radius: 6px;
 }

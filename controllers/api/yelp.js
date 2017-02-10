@@ -12,7 +12,7 @@ function search(req, res) {
   var price = req.body.price;
   yelp.search({ term: term, location: location, radius: radius, price: price, categories: 'food,bars,restaurants', limit: 50 })
   .then(function (data) {
-    var jsonBussObj = JSON.parse(data); // Parse JSON string to JSON Object
+    var jsonBussObj = JSON.parse(data);
     res.render('show', {jsonBussObj, user: req.user, term, location });
   })
   .catch(function (err) {
