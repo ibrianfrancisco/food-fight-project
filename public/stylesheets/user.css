@@ -2,50 +2,39 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  /*display: flex;*/
+  /*min-height: 100vh;*/
+  /*flex-direction: column;*/
 }
 
 main {
-  flex: 1 0 auto;
-}
-
-#footer {
-   left:0px;
-   bottom:0px;
-   height:-30px;
-   width:100%;
-   background:#999;
-}
-
-/* IE 6 */
-* html #footer {
-   position:absolute;
-   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+  /*flex: 1 0 auto;*/
 }
 
 .card {
   border-radius: 6px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 300px;
+  padding: 5px;
+}
+
+.container {
+  column-count: 4;
+  column-gap: 0;
+  margin: auto;
+  padding-left: 20px;
+  width: 100%;
 }
 
 .jumbotron {
   background-color: #e0e0e0;
   padding: 15px;
+  margin-bottom: 10px;
 }
 
-
-#footer {
-   position:fixed;
-   left:0px;
-   bottom:0px;
-   height:-30px;
-   width:100%;
-   background:#999;
-}
-
-/* IE 6 */
-* html #footer {
-   position:absolute;
-   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+h5 {
+  text-align: center;
 }
