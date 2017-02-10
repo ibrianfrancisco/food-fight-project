@@ -1,4 +1,15 @@
 /*show start*/
+body {
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 .show-img {
   height: 400px;
   width: 400px;
@@ -214,3 +225,8 @@ i.material-icons.search {
   line-height: 0;
   height: 0;
 }
+
+.btn {
+  vertical-align: inherit;
+}
+

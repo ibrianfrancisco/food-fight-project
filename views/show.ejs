@@ -50,7 +50,7 @@
             <ul id='dropdown1' class='dropdown-content'>
               <li><a href="/">Search</a></li>
               <li class="divider"></li>
-              <li><a href="/users/<$= user.id $>">Favorites</a></li>
+              <li><a href="/users<$= user.id $>">Favorites</a></li>
               <li class="divider"></li>
               <li class="divider"></li>
                 <li><a href="/logout">Logout</a></li>
@@ -87,7 +87,11 @@
             <img id="business-image">
           </div>
           <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">Map<i class="material-icons right">room</i></span>
+            <span class="card-title activator grey-text text-darken-4"><$ if (user) { $>
+     <span id='fav'><a id='favorite'><i class="material-icons">favorite_outline</i></a></span>
+   <$ } else { $>
+     <span>Login to save!</span>
+   <$ } $><i class="material-icons right">room</i></span>
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
@@ -96,13 +100,7 @@
           </div>
         </div>
     </div>
-
-  <$ if (user) { $>
-     <span id='fav'><a id='favorite'><i class="material-icons">favorite_outline</i></a></span>
-   <$ } else { $>
-     <span>Login to save!</span>
-   <$ } $>
-
+    </div>
 
     <script type="text/javascript">
     //----- VARIABLES -----//
@@ -141,7 +139,7 @@
       $('#business-image').css({'background-image': 'url(' + shuffled[0].image_url + ')'});
       $('#biz-name').html(shuffled[0].name);
       $('#modal-biz-name').html(shuffled[0].name);
-      $('#phone-number').html("Phone number: " + shuffled[0].phone);
+      $('#phone-number').html(shuffled[0].phone);
       $('#biz-price').html(shuffled[0].price);
       reviewImage(0);
       $('#favorite').attr('biz-id', shuffled[0].yelp_id);
@@ -177,7 +175,7 @@
         $('#business-image').css({'background-image': 'url(' + shuffled[next].image_url + ')'});
         $('#biz-name').html(shuffled[next].name);
         $('#modal-biz-name').html(shuffled[next].name);
-        $('#phone-number').html("Phone number: " + shuffled[next].phone);
+        $('#phone-number').html(shuffled[next].phone);
         $('#biz-price').html(shuffled[next].price)
         reviewImage(next);
         $('#favorite').attr('biz-id', shuffled[next].yelp_id);
