@@ -2,7 +2,9 @@
 ## By Team Gryffindor
 
 ### Description
-> Foodfight.com is for all the indecisive people in the world that are tired of spending hours on end deciding where to eat.
+> Foodfight.com is for all the indecisive people in the world that are tired of spending hours on end deciding where to eat. All you have to do is input what you feel like eating and give a location and our app will display a random restaurant one at a time until you find the one you like most.
+> 
+> Becoming a user on our app is as easy as clicking a button. All you have to do is sign in through Google.
 ![alt](http://i.imgur.com/FblITY8.png)
 
 ### Technologies Used
