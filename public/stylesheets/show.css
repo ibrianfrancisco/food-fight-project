@@ -30,8 +30,8 @@
   position: relative;
 }
 .show-search {
-  background-color: rgba(0,0,0,.5);
-  width: 1200px;
+  /*background-color: rgba(0,0,0,.5);*/
+  width: 1000px;
   padding-bottom: 20px;
   margin: 0 auto;
 }
@@ -39,13 +39,17 @@
 .dist-sel {
   width: 100px;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
+  background-color: black;
+  border-radius: 6px;
 }
 
 .rating-sel {
   width: 100px;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
+  background-color: black;
+  border-radius: 6px;
 }
 
 #price-label {
@@ -83,11 +87,6 @@
   padding: 0;
 }
 
-.inner-form-wrap {
-  width: 80%;
-  margin: 0 auto;
-}
-
 #image {
   height: 30px;
   width: 141px;
@@ -122,7 +121,7 @@ html, body {
 }
 
 button {
-  height: 50px;
+  height: 40px;
   width: 50px;
   border-radius: 6px;
   border: white;
@@ -135,8 +134,8 @@ button {
 }*/
 
 nav {
-  padding-top: 5px;
-  background-color: transparent;
+  padding: 0;
+  background-color: gray;
   box-shadow: none;
 }
 
@@ -162,7 +161,56 @@ nav ul a {
   padding-left: 20px;
 }
 
-nav .input-field input[type=text]:valid {
+/*nav .input-field input[type=text]:valid {
   border: 1px solid #bdbdbd;
   border-radius: 6px;
+}*/
+
+.detail-wrap {
+  text-align: center;
+  padding-top: 30%;
+}
+
+#next-button {
+  position: absolute;
+  bottom: 5%;
+  /*right: 30%;*/
+  background-color: black;
+}
+
+.info-padding {
+  margin-top: 10px;
+}
+
+nav .input-field input {
+  font-size: 23px;
+}
+
+form {
+  display: inline;
+}
+
+.input-field {
+  display: inline;
+}
+
+.input-field.term {
+  padding-left: 10px;
+}
+
+.select-wrapper input.select-dropdown {
+  border-bottom: none;
+}
+
+.select-wrapper span.caret {
+  color: transparent;
+}
+
+div.form {
+  display: inline-block;
+}
+
+i.material-icons.search {
+  line-height: 0;
+  height: 0;
 }
