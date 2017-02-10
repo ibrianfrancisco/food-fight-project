@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link rel='stylesheet' href='/stylesheets/nav.css'/>
-    <link rel='stylesheet' href='/stylesheets/show.css'/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<$ include head $>
+  <link rel='stylesheet' href='/stylesheets/show.css'/>
   </head>
   <body>
   <!-- NAVBAR -->
@@ -17,7 +10,7 @@
         <div class="">
           <div class="brand-logo"><a href="/" id="project-name" class="brand-logo"><img class="logo" src="../images/logo.png"></a></div>
           <div class="brand-name">Food Fight!</div>
-          <div class="form">  
+          <div class="form">
             <form class="show-search" action="/search" method="POST">
 
               <div class="input-field term">
@@ -44,13 +37,13 @@
                   <option value="3,4">Fancy</option>
                 </select>
               </div>
-              
+
               <div class="input-field">
                 <button type="submit"><i class="material-icons search">search</i></button>
               </div>
 
             </form>
-          </div>    
+          </div>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
               <$ if (user) { $>
               <li><a class='dropdown-button' href='#' data-activates='dropdown1'><img src="<$= user.profileImage $>"></a></li>
@@ -70,9 +63,8 @@
       </nav>
     </div>
   <br>
-  <br>
-    
   </div>
+  <p class="alert"></p>
   <!-- Testing -->
   <div class="row">
       <div class="col s6">
@@ -84,7 +76,7 @@
             <h5 id="phone-number" class="info-padding"></h5>
             <a target="_blank" id="url" class="info-padding">Website</a>
           </div>
-          <button id="next-button" class="btn waves-effect waves-light btn-large mid-btn" onclick="nextBusiness();" type="submit" name="action">Next!
+          <button id="next-button" class="btn waves-effect waves-light btn-large mid-btn" onclick="nextBusiness(); resetFav();" type="submit" name="action">Next!
             <i class="material-icons right">send</i>
           </button>
         </div>
@@ -103,15 +95,14 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
-  <!-- Testing -->
 
   <$ if (user) { $>
      <span id='fav'><a id='favorite'><i class="material-icons">favorite_outline</i></a></span>
    <$ } else { $>
      <span>Login to save!</span>
    <$ } $>
+
 
     <script type="text/javascript">
     //----- VARIABLES -----//
@@ -120,7 +111,7 @@
         <$ jsonBussObj.businesses.forEach(function(business) { $>
           {
             yelp_id: '<$= business.id $>',
-            name: '<$= business.name $>',
+            name: "<$- business.name $>",
             url: '<$= business.url $>',
             phone: '<$= business.phone $>',
             image_url: '<$= business.image_url $>',
@@ -155,9 +146,13 @@
       reviewImage(0);
       $('#favorite').attr('biz-id', shuffled[0].yelp_id);
       a.href = shuffled[0].url;
-
+      // if (req.user.favorites.findIndex())
 
       //----- FUNCTIONS -----//
+      function resetFav() {
+        $('#favorite').html('<i class="material-icons">favorite_outline</i>');
+      }
+
       function shuffle(array) {
         var m = array.length, t, i;
         // While there remain elements to shuffle…
@@ -282,17 +277,6 @@
       });
 
     </script>
-    <!-- also find a way to continously going without having a limit, so far limit might be 20? not sure -->
-
-    <!-- jQuery (required by Materialize) -->
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <!-- Using Underscore for collection manipulation and client-side templatin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <!-- JavaScript for Materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-    <script src="javascripts/main.js"></script>
     <script src="javascripts/favorite.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<$= process.env.GOOGLE_MAP_JS_KEY $>&q&callback=initMap" async defer></script>
-  </body>
-</html>
+<$ include footer $>

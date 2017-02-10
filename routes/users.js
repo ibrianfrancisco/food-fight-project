@@ -7,7 +7,7 @@ var userCtrl = require('../controllers/users');
 //   res.send('respond with a resource');
 // });
 
-router.get('/:id', isLoggedIn, userCtrl.show);
+router.get('/', isLoggedIn, userCtrl.show);
 
 
 router.get('/user', function(req, res, next) {
