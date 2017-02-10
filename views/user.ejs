@@ -50,7 +50,7 @@
 
 
     </div>
-    <form action="/users/<$= user.id $>?_method=DELETE" method="POST">
+    <form action="/users/<$= user.id $>?_method=DELETE" method="POST" onsubmit="return confirm(`You're about to delete your account, are you sure?`)">
       <input id="delete-user" type="submit" value="delete">
     </form>
       <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
