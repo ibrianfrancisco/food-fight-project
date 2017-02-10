@@ -19,7 +19,7 @@
       <h4 class="center-align"><$= user.userName $></h4>
     </div>
     <div class="container">
-      <h5>My Favorites</h5>
+      <h5>My Profile</h5>
 
         <div class="row" id="cards">
         <$ if (user.favorites.length === 0) { $>
@@ -50,7 +50,9 @@
 
 
     </div>
-
+    <form action="/users/<$= user.id $>?_method=DELETE" method="POST">
+      <input id="delete-user" type="submit" value="delete">
+    </form>
       <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
       <script src="https://apis.google.com/js/platform.js" async defer></script>
       <script src="/javascripts/unfavorite.js"></script>

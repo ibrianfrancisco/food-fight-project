@@ -8,7 +8,7 @@ var userCtrl = require('../controllers/users');
 // });
 
 router.get('/:id', isLoggedIn, userCtrl.show);
-
+router.delete('/:id', userCtrl.remove);
 
 router.get('/user', function(req, res, next) {
   res.render('user', { user: req.user });
