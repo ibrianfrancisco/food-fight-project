@@ -246,6 +246,20 @@ i.material-icons.search {
   color: black;
 }
 
+#delete-user {
+  border: none;
+  background-color: white !important;
+  color: #26a69a;
+  font-size: 16px !important;
+  padding: 14px 0px !important;
+  font-weight: bold;
+  margin-left: 18px;
+}
+
+.card .card-content {
+  padding-bottom: 40px;
+}
+
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

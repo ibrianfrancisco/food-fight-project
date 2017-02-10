@@ -35,7 +35,7 @@ main {
   white-space: nowrap;
 }
 
-form:after {
+form#search:after {
   content:"";
   position: absolute;
   top: 0;

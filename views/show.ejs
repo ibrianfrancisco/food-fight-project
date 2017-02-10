@@ -30,14 +30,13 @@
           <img id="business-image">
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">
+          <span class="card-title activator grey-text text-darken-4 valign-wrapper">
           <$ if (user) { $>
-            <span id='fav'><a id='favorite'><i class="material-icons">favorite_outline</i></a></span>
-          <$ } else { $>
-            <span>Login to save!</span>
-          <$ } $>
-            <i class="material-icons right">room</i>
-          </span>
+            <span id='fav'><a id='favorite'><i class="left valign material-icons">favorite_outline</i></a></span>
+         <$ } else { $>
+           <span>Login to save!</span>
+         <$ } $>
+        <i class="valign material-icons right">room</i></span>
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
@@ -99,7 +98,7 @@
 
       //----- FUNCTIONS -----//
       function resetFav() {
-        $('#favorite').html('<i class="material-icons">favorite_outline</i>');
+        $('#favorite').html('<i class="left valign material-icons">favorite_outline</i>');
       }
 
       function shuffle(array) {

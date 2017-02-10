@@ -2,13 +2,13 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  display: flex;
+/*  display: flex;
   min-height: 100vh;
-  flex-direction: column;
+  flex-direction: column;*/
 }
 
 main {
-  flex: 1 0 auto;
+/*  flex: 1 0 auto;*/
 }
 
 .card {
@@ -22,6 +22,7 @@ main {
 }
 
 .container {
+  column-count: 4;
   column-gap: 0;
   margin: auto;
   padding-left: 20px;
