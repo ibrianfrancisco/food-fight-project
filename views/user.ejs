@@ -1,5 +1,6 @@
 <$ include head $>
     <link rel='stylesheet' href='/stylesheets/user.css'/>
+    <link rel='stylesheet' href='/stylesheets/footer.css'/>
   </head>
   <body>
     <div id="main-wrapper">
@@ -12,9 +13,9 @@
     <div class="jumbotron">
       <div  class="center-align" ><img src="<$= user.profileImage $>"></div>
       <h4 class="center-align"><$= user.userName $></h4>
+      <h5>My Profile</h5>
     </div>
     <div class="container">
-      <h5>My Profile</h5>
 
         <div class="row" id="cards">
         <$ if (user.favorites.length === 0) { $>
@@ -22,7 +23,7 @@
           <br>
         <$ } else { $>
           <$ user.favorites.forEach(function(fav) { $>
-              <div class="col s12 m4">
+              <!-- <div class="col s12 m4"> -->
                 <div class="card">
                   <div class="card-image">
                     <img src="<$= fav.image_url $>">
@@ -38,7 +39,7 @@
                     <a href="<$= fav.url $>" target="_blank">Yelp link</a>
                   </div>
                 </div>
-              </div>
+              <!-- </div> -->
           <$ }) $>
         <$ } $>
       </div>
