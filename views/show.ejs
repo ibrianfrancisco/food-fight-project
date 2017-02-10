@@ -50,7 +50,7 @@
             <ul id='dropdown1' class='dropdown-content'>
               <li><a href="/">Search</a></li>
               <li class="divider"></li>
-              <li><a href="/users<$= user.id $>">Favorites</a></li>
+              <li><a href="/users">Favorites</a></li>
               <li class="divider"></li>
               <li class="divider"></li>
                 <li><a href="/logout">Logout</a></li>
@@ -100,7 +100,7 @@
           </div>
         </div>
     </div>
-    </div>
+  </div>
 
     <script type="text/javascript">
     //----- VARIABLES -----//
@@ -172,15 +172,14 @@
         var direction_url = 'https://www.google.com/maps/dir/Current+Location/'+ name + '+' + zip_code;
 
         $('#business-name').html(shuffled[next].name);
-        $('#business-image').css({'background-image': 'url(' + shuffled[next].image_url + ')'});
         $('#biz-name').html(shuffled[next].name);
         $('#modal-biz-name').html(shuffled[next].name);
-        $('#phone-number').html(shuffled[next].phone);
         $('#biz-price').html(shuffled[next].price)
         reviewImage(next);
         $('#favorite').attr('biz-id', shuffled[next].yelp_id);
         a.href = shuffled[next].url;
-
+        if (shuffled[next].image_url === '') return $('#business-image').css({"background-image": "url(/images/no-image.png)"});
+        $('#business-image').css({'background-image': 'url(' + shuffled[next].image_url + ')'});
       };
 
       function reviewImage(idx) {
