@@ -127,8 +127,8 @@ main {
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
 #map {
-  height: 300px;
-  width: 300px;
+  height: 470px;
+  width: 450px;
   margin: 0 auto;
   border: 2px solid black;
 }
