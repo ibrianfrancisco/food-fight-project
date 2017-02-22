@@ -16,7 +16,8 @@
 6. OAuth 2.0
 7. AJAX
 8. Google Materialize
-9. Yelp-v3 Library Package
+9. Yelp Fusion API
+10. Google Maps API
 
 ### Getting Started
 1. The Website can be reached  [Here](https://food-fight-app.herokuapp.com/)
